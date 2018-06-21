@@ -30,7 +30,7 @@ app.post('/activity/execute', (req, res) => {
 });
 
 // Serve the custom activity's interface, config, etc.
-app.use(express.static(Path.join(__dirname, '..', 'public')));
+app.use(express.static(Path.join(__dirname, 'public')));
 
 // Start the server and listen on the port specified by heroku or defaulting to 12345
 app.listen(process.env.PORT || 3000, () => {
