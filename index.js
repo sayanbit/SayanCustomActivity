@@ -1,7 +1,7 @@
 'use strict';
 
 const Path = require('path');
-const Pkg = require(Path.join(__dirname, '..', 'package.json'));
+const Pkg = require(Path.join(__dirname, 'package.json'));
 const express = require('express');
 
 const app = express();
