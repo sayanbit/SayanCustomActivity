@@ -3,7 +3,7 @@
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/sms.png",
-		"smallIcon": "images/icon_small"
+		"smallIcon": "images/icon_small.png"
 	},
 	"type": "RESTDECISION",
 	"lang": {
