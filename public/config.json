@@ -1,0 +1,115 @@
+{
+	"key": "de8ede76-8fce-4218-8500-6aaeaa753d86",
+	"workflowApiVersion": "1.1",
+	"metaData": {
+		"icon": "images/sms.png",
+		"smallIcon": "images/icon_small"
+	},
+	"type": "RESTDECISION",
+	"lang": {
+		"en-US": {
+			"name": "Holiday Check",
+			"description": "A custom activity to check if the working it is a holiday or not."
+		}
+	},
+	"arguments": {
+		"execute": {
+			"inArguments": [],
+			"outArguments": [],
+			"url": "https://some-endpoint.com/execute"
+		}
+	},
+	"configurationArguments": {
+		"applicationExtensionKey": "de8ede76-8fce-4218-8500-6aaeaa753d86",
+		"save": {
+			"url": "URI/for/your/activity/save",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true,
+			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+		},
+		"publish": {
+			"url": "URI/for/your/activity/publish",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true,
+			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+		},
+		"validate": {
+			"url": "URI/for/your/activity/validate",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true,
+			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+		},
+		"stop": {
+			"url": "URI/for/your/activity/stop",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true,
+			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+		}
+	},
+	"wizardSteps": [
+		{
+			"label": "Step 1",
+			"key": "step1"
+		}
+	],
+	"userInterfaces": {
+		"configModal": {
+			"height": 200,
+			"width": 300,
+			"fullscreen": true
+		}
+	},
+	"schema": {
+		"arguments": {
+			"execute": {
+				"inArguments": [
+					{
+						"myInArgument": {
+							"dataType": "<some data type>",
+							"isNullable": false,
+							"direction": "in"
+						}
+					}
+				],
+				"outArguments": [],
+				"url": "",
+				"verb": "POST",
+				"body": "",
+				"useJwt": true,
+				"header": "",
+				"format": "json",
+				"timeout": 90000,
+				"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			}
+		}
+	},
+	"outcomes": [
+		{
+			"arguments": {
+				"branchResult": "is_holiday",
+				"some argument": "passed from config.json for buy_item"
+			},
+			"metaData": {
+				"label": "Is Holiday"
+			}
+		},
+		{
+			"arguments": {
+				"branchResult": "is_working",
+				"some argument": "passed from config.json for hold_item"
+			},
+			"metaData": {
+				"label": "Is Working"
+			}
+		}
+	],
+	"edit": {
+		"url": "https://<URL OF THE SERVER RUNNING THE BACKEND>/index.html",
+		"height": 200,
+		"width": 500
+	}
+}

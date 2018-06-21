@@ -1,0 +1,27 @@
+{
+	"name": "msholidaycheck",
+	"version": "1.0.0",
+	"description": "Holiday Check Package",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"sfmc",
+		"holiday check"
+	],
+	"author": "Manjit Singh",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"jsonwebtoken": "^8.3.0"
+	},
+	"options": {
+		"salesforce": {
+			"marketingCloud": {
+				"jwtSecret": "hellomanjitsinghholidayactivity"
+			}
+		}
+	}
+}
