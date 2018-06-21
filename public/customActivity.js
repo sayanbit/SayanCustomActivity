@@ -49,13 +49,9 @@ define(function (require) {
         $('.step').hide();
 
         switch (currentStep.key) {
-            case 'eventdefinitionkey':
+            case 'message_only':
                 $('#step1').show();
                 $('#step1 input').focus();
-                break;
-            case 'idselection':
-                $('#step2').show();
-                $('#step2 input').focus();
                 break;
         }
     }
