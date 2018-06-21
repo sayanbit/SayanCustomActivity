@@ -23,7 +23,7 @@ define(function (require) {
     }
 
     function onClickedNext() {
-        if (currentStep.key === 'idselection') {
+        if (currentStep.key === 'message_only') {
             save();
         } else {
             connection.trigger('nextStep');
@@ -51,7 +51,6 @@ define(function (require) {
         switch (currentStep.key) {
             case 'message_only':
                 $('#step1').show();
-                $('#step1 input').focus();
                 break;
         }
     }
