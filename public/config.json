@@ -2,7 +2,7 @@
 	"key": "de8ede76-8fce-4218-8500-6aaeaa753d86",
 	"workflowApiVersion": "1.1",
 	"metaData": {
-		"icon": "images/sms.png",
+		"icon": "images/icon.png",
 		"smallIcon": "images/icon_small.png"
 	},
 	"type": "RESTDECISION",
