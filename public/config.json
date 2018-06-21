@@ -12,13 +12,6 @@
 			"description": "A custom activity to check if the working it is a holiday or not."
 		}
 	},
-	"arguments": {
-		"execute": {
-			"inArguments": [],
-			"outArguments": [],
-			"url": "https://ms-holiday-check.herokuapp.com/activity/execute"
-		}
-	},
 	"configurationArguments": {
 		"applicationExtensionKey": "de8ede76-8fce-4218-8500-6aaeaa753d86",
 		"save": {
@@ -63,20 +56,18 @@
 			"fullscreen": true
 		}
 	},
-	"schema": {
-		"arguments": {
-			"execute": {
-				"inArguments": [],
-				"outArguments": [],
-				"url": "",
-				"verb": "POST",
-				"body": "",
-				"useJwt": true,
-				"header": "",
-				"format": "json",
-				"timeout": 90000,
-				"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
-			}
+	"arguments": {
+		"execute": {
+			"inArguments": [],
+			"outArguments": [],
+			"url": "https://ms-holiday-check.herokuapp.com/activity/execute",
+			"verb": "POST",
+			"body": "",
+			"useJwt": true,
+			"header": "",
+			"format": "json",
+			"timeout": 90000,
+			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
 		}
 	},
 	"outcomes": [
