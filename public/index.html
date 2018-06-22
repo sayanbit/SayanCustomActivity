@@ -16,22 +16,13 @@
             font-family: "Salesforce Sans", Arial, sans-serif;
         }
 
-        .step {
-            display: none;
-        }
-
-        #step1 {
-            display: block;
-        }
-
         input {
             font-family: inherit;
             display: block;
             padding: 4px 5px;
             font-size: 11px;
             color: #16325c;
-            background-color: #ffffff;
-            background-image: none;
+            background: #ffffff none;
             border: 1px solid #d8dde6;
             border-radius: 0.25rem;
             -webkit-box-shadow: none;
@@ -43,7 +34,7 @@
             margin-bottom: 40px;
         }
 
-        .inputLabel {
+        label {
             margin-bottom: 5px;
             font-size: 8pt;
             color: #808080;
@@ -53,7 +44,11 @@
 </head>
 <body>
 <div id="step1" class="step">
-    THIS IS A DECISION MAKER
+    <label for="dename">Data Extension Name</label>
+    <input type="text" name="dename" id="dename">
+
+    <label for="fieldToUpdate">Attribute to update</label>
+    <input type="text" name="fieldToUpdate" id="fieldToUpdate">
 </div>
 <div id="endpoints">
 

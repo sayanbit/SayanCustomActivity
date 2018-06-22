@@ -15,6 +15,8 @@ app.use(require('body-parser').raw({
 app.post('/activity/execute', (req, res) => {
     console.log(req.body);
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
+        console.log('DECODED EXECUTE');
+        console.log(JSON.stringify(decoded));
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
@@ -32,7 +34,6 @@ app.post('/activity/execute', (req, res) => {
 // Routes for saving, publishing and validating the custom activity. In this case
 // nothing is done except decoding the jwt and replying with a success message.
 app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
-    console.log(JSON.stringify(req.body));
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         console.log(JSON.stringify(err));
