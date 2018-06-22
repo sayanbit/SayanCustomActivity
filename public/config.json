@@ -94,5 +94,13 @@
 		"url": "https://ms-holiday-check.herokuapp.com/index.html",
 		"height": 200,
 		"width": 500
+	},
+	"schema": {
+		"arguments": {
+			"execute": {
+				"inArguments": [],
+				"outArguments": []
+			}
+		}
 	}
 }
