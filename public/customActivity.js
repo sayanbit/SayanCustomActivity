@@ -1,8 +1,8 @@
 'use strict';
 
 define(function (require) {
-    let Postmonger = require('postmonger');
-    let connection = new Postmonger.Session();
+    let postMonger = require('postmonger');
+    let connection = new postMonger.Session();
     let payload = {};
     let steps = [
         {'key': 'message_only', 'label': 'Holiday Check'}
@@ -17,7 +17,9 @@ define(function (require) {
     });
 
     function initialize(data) {
+        console.log('-------------------------------------------------------');
         if (data) {
+            console.log(data);
             payload = data;
         }
     }
