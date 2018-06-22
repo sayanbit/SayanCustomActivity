@@ -34,8 +34,11 @@ app.post('/activity/execute', (req, res) => {
 app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
+        console.log(JSON.stringify(err));
         if (err)	return res.status(401).end();
 
+        console.log('-----------------------------');
+        console.log(JSON.stringify(decoded));
         return res.status(200).json({success: true});
     });
 });
@@ -44,7 +47,7 @@ app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
 app.use(express.static(Path.join(__dirname, 'public')));
 
 // Start the server and listen on the port specified by heroku or defaulting to 12345
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 4000, () => {
     console.log('Service Cloud custom split backend is now running!');
 });
 
