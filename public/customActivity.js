@@ -17,7 +17,7 @@ define(function (require) {
     });
 
     function initialize(data) {
-        console.log('-------------------------------------------------------');
+        console.log('INIT-------------------------------------------------------');
         if (data) {
             console.log(data);
             payload = data;
@@ -25,6 +25,7 @@ define(function (require) {
     }
 
     function onClickedNext() {
+        console.log('NEXT-------------------------------------------------------');
         if (currentStep.key === 'message_only') {
             save();
         } else {
@@ -33,15 +34,18 @@ define(function (require) {
     }
 
     function onClickedBack() {
+        console.log('BACK-------------------------------------------------------');
         connection.trigger('prevStep');
     }
 
     function onGotoStep(step) {
+        console.log('STEP-------------------------------------------------------');
         showStep(step);
         connection.trigger('ready');
     }
 
     function showStep(step, stepIndex) {
+        console.log('SHOW STEP-------------------------------------------------------');
         if (stepIndex && !step) {
             step = steps[stepIndex - 1];
         }
@@ -58,6 +62,7 @@ define(function (require) {
     }
 
     function save() {
+        console.log('SAVE-------------------------------------------------------');
         payload['arguments'] = payload['arguments'] || {};
         payload['arguments'].execute = payload['arguments'].execute || {};
         payload['metaData'] = payload['metaData'] || {};
