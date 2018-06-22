@@ -32,10 +32,11 @@ app.post('/activity/execute', (req, res) => {
 // Routes for saving, publishing and validating the custom activity. In this case
 // nothing is done except decoding the jwt and replying with a success message.
 app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
+    JSON.stringify(req.body);
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         console.log(JSON.stringify(err));
-        if (err)	return res.status(401).end();
+        if (err) return res.status(401).end();
 
         console.log('-----------------------------');
         console.log(JSON.stringify(decoded));
