@@ -4,8 +4,10 @@ define(function (require) {
     let postMonger = require('postmonger');
     let connection = new postMonger.Session();
     let payload = {};
+    let tokens = {};
+    let endpoints = {};
     let steps = [
-        {'key': 'message_only', 'label': 'Holiday Check'}
+        {'key': 'step1', 'label': 'Holiday Check'}
     ];
     let currentStep = steps[0].key;
     let eventDefinitionKey = '';
@@ -13,7 +15,8 @@ define(function (require) {
 
     $(window).ready(function () {
         connection.trigger('ready');
-        connection.trigger('requestInteraction');
+        connection.trigger('requestTokens');
+        connection.trigger('requestEndpoints');
     });
 
     function initialize(data) {
@@ -26,7 +29,7 @@ define(function (require) {
 
     function onClickedNext() {
         console.log('NEXT-------------------------------------------------------');
-        if (currentStep.key === 'message_only') {
+        if (currentStep.key === 'step1') {
             save();
         } else {
             connection.trigger('nextStep');
@@ -72,6 +75,22 @@ define(function (require) {
 
         connection.trigger('updateActivity', payload);
     }
+
+    connection.on('requestedTokens', function (data) {
+        if (data.error) {
+            console.error(data.error);
+        } else {
+            tokens = data;
+        }
+    });
+
+    connection.on('requestedEndpoints', function (data) {
+        if (data.error) {
+            console.error(data.error);
+        } else {
+            endpoints = data;
+        }
+    });
 
     connection.on('initActivity', initialize);
     connection.on('clickedNext', onClickedNext);
