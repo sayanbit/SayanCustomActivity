@@ -72,6 +72,8 @@ define(function (require) {
         payload['metaData'].isConfigured = true;
 
         console.log(JSON.stringify(payload));
+        console.log(JSON.stringify(tokens));
+        console.log(JSON.stringify(endpoints));
 
         connection.trigger('updateActivity', payload);
     }
@@ -81,6 +83,7 @@ define(function (require) {
             console.error(data.error);
         } else {
             tokens = data;
+            $('#tokens').html(JSON.stringify(tokens));
         }
     });
 
@@ -89,6 +92,7 @@ define(function (require) {
             console.error(data.error);
         } else {
             endpoints = data;
+            $('#endpoints').html(JSON.stringify(endpoints));
         }
     });
 
