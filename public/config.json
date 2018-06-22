@@ -5,7 +5,7 @@
 		"icon": "images/icon.png",
 		"smallIcon": "images/icon_small.png"
 	},
-	"type": "Wait",
+	"type": "DataExtensionUpdate",
 	"lang": {
 		"en-US": {
 			"name": "Holiday Check",
