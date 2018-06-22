@@ -19,28 +19,28 @@
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"publish": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"validate": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"stop": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/stop",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		}
 	},
 	"wizardSteps": [
@@ -67,7 +67,7 @@
 			"header": "",
 			"format": "json",
 			"timeout": 90000,
-			"customerKey": "0x68656c6c6f6d616e6a697473696e6768686f6c696461796163746976697479"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		}
 	},
 	"outcomes": [
