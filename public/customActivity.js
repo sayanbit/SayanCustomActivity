@@ -58,7 +58,7 @@ define(function (require) {
         $('.step').hide();
 
         switch (currentStep.key) {
-            case 'message_only':
+            case 'step1':
                 $('#step1').show();
                 break;
         }

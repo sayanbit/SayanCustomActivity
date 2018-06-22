@@ -46,7 +46,7 @@
 	"wizardSteps": [
 		{
 			"label": "Step 1",
-			"key": "message_only"
+			"key": "step1"
 		}
 	],
 	"userInterfaces": {
