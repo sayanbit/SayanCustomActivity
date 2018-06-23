@@ -13,7 +13,6 @@ app.use(require('body-parser').raw({
 
 // Route that is called for every contact who reaches the custom split activity
 app.post('/activity/execute', (req, res) => {
-    console.log(req.body);
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         console.log('DECODED EXECUTE');
         console.log(JSON.stringify(decoded));
@@ -36,11 +35,10 @@ app.post('/activity/execute', (req, res) => {
 app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
-        console.log(JSON.stringify(err));
+        console.log('Error' + JSON.stringify(err));
         if (err) return res.status(401).end();
 
-        console.log('-----------------------------');
-        console.log(JSON.stringify(decoded));
+        console.log('Decoded' + JSON.stringify(decoded));
         return res.status(200).json({success: true});
     });
 });
