@@ -129,6 +129,7 @@
 						"contactFirstName": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -136,6 +137,7 @@
 						"contactLastName": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -143,6 +145,7 @@
 						"contactIdentifier": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -150,6 +153,7 @@
 						"emailAddress": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -157,6 +161,7 @@
 						"twitterHandle": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -164,6 +169,7 @@
 						"lastLogin": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					},
@@ -171,6 +177,7 @@
 						"birthdayCoupon": {
 							"dataType": "Text",
 							"isNullable": true,
+							"access": "Visible",
 							"direction": "In"
 						}
 					}
