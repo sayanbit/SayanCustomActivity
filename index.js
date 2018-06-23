@@ -50,16 +50,17 @@ app.use(express.static(Path.join(__dirname, 'public')));
 
 // Start the server and listen on the port specified by heroku or defaulting to 12345
 app.listen(process.env.PORT || 443, () => {
-    console.log('Service Cloud custom split backend is now running!');
+    console.log('Service Cloud custom split backend is now running at port! ' + process.env.PORT || 443);
 });
 
 
 function verifyToken(body, secret, cb) {
     if (!body) {
-        return cb(new Error('invalid jwtdata'));
+        return cb(new Error('JWT is malformed. It is likely due to incorrect ' +
+            'JWT token or wrong key in arguments of config.json'));
     }
 
-    require('jsonwebtoken').verify(body.toString('utf8'), secret, {
+    require('jsonwebtoken').verify(body.toString("utf8"), secret, {
         algorithm: 'HS256'
     }, cb);
 }

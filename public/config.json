@@ -58,8 +58,34 @@
 	},
 	"arguments": {
 		"execute": {
-			"inArguments": [],
-			"outArguments": [],
+			"inArguments": [
+				{
+					"contactFirstName": "{{Contact.Default.FirstName}}"
+				},
+				{
+					"contactLastName": "{{Contact.Default.LastName}}"
+				},
+				{
+					"contactIdentifier": "{{Contact.Key}}"
+				},
+				{
+					"emailAddress": "{{InteractionDefaults.Email}}"
+				},
+				{
+					"twitterHandle": "{{Contact.Default.Twitter}}"
+				},
+				{
+					"lastLogin": "{{Contact.Attribute.Engagement.LastLogin}}"
+				},
+				{
+					"birthdayCoupon": "{{Contact.Attribute.BirthdayCoupon.EmailAddress}}"
+				}
+			],
+			"outArguments": [
+				{
+					"foundSignupDate": ""
+				}
+			],
 			"url": "https://ms-holiday-check.herokuapp.com/activity/execute",
 			"verb": "POST",
 			"body": "",
@@ -98,8 +124,67 @@
 	"schema": {
 		"arguments": {
 			"execute": {
-				"inArguments": [],
-				"outArguments": []
+				"inArguments": [
+					{
+						"contactFirstName": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"contactLastName": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"contactIdentifier": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"emailAddress": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"twitterHandle": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"lastLogin": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					},
+					{
+						"birthdayCoupon": {
+							"dataType": "Text",
+							"isNullable": true,
+							"direction": "In"
+						}
+					}
+				],
+				"outArguments": [
+					{
+						"foundSignupDate": {
+							"dataType": "Text",
+							"isNullable": true,
+							"access": "Visible",
+							"direction": "Out"
+						}
+					}
+				]
 			}
 		}
 	}
