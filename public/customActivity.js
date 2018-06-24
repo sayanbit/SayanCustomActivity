@@ -17,6 +17,8 @@ define(function (require) {
         connection.trigger('ready');
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
+        connection.trigger('requestInteractionDefaults');
+        connection.trigger('requestTriggerEventDefinition');
     });
 
     function initialize(data) {
@@ -94,6 +96,14 @@ define(function (require) {
             endpoints = data;
             $('#endpoints').html(JSON.stringify(endpoints));
         }
+    });
+
+    connection.on('requestedInteractionDefaults', function (data) {
+        console.log(JSON.stringify(data));
+    });
+
+    connection.on('requestedTriggerEventDefinition', function (data) {
+        console.log(JSON.stringify(data));
     });
 
     connection.on('initActivity', initialize);

@@ -22,7 +22,7 @@ app.post('/activity/execute', (req, res) => {
             return res.status(401).end();
         }
 
-        if (parseInt(Math.random() * 100) % 2 === 0) {
+        if (Math.floor(Math.random() * 100) % 2 === 0) {
             return res.status(200).json({branchResult: 'is_working'});
         } else {
             return res.status(200).json({branchResult: 'is_holiday'});

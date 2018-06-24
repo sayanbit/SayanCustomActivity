@@ -3,7 +3,8 @@
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/icon.png",
-		"smallIcon": "images/icon_small.png"
+		"smallIcon": "images/icon_small.png",
+		"configOnDrop": true
 	},
 	"type": "RESTDECISION",
 	"lang": {
@@ -58,7 +59,11 @@
 	},
 	"arguments": {
 		"execute": {
-			"inArguments": [],
+			"inArguments": [
+				{
+					"contactIdentifier": "{{Contact.Key}}"
+				}
+			],
 			"outArguments": [],
 			"url": "https://ms-holiday-check.herokuapp.com/activity/execute",
 			"verb": "POST",
@@ -98,7 +103,16 @@
 	"schema": {
 		"arguments": {
 			"execute": {
-				"inArguments": [],
+				"inArguments": [
+					{
+						"": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					}
+				],
 				"outArguments": []
 			}
 		}
