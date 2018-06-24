@@ -9,7 +9,7 @@
 	"type": "RESTDECISION",
 	"lang": {
 		"en-US": {
-			"name": "Holiday Check",
+			"name": "Find Next Working Day",
 			"description": "A custom activity to check if the working it is a holiday or not."
 		}
 	},
@@ -62,6 +62,12 @@
 			"inArguments": [
 				{
 					"contactIdentifier": "{{Contact.Key}}"
+				},
+				{
+					"intKey": "{{Interaction.EVENT_KEY.SubscriberKey}}"
+				},
+				{
+					"eventKey": "{{Event.EVENT_KEY.SubscriberKey}}"
 				}
 			],
 			"outArguments": [],
@@ -105,7 +111,23 @@
 			"execute": {
 				"inArguments": [
 					{
-						"": {
+						"contactIdentifier": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"intKey": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"eventKey": {
 							"dataType": "string",
 							"isNullable": false,
 							"direction": "in",
