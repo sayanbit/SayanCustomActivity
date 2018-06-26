@@ -72,7 +72,9 @@ define(function (require) {
         payload['arguments'].execute = payload['arguments'].execute || {};
         payload['metaData'] = payload['metaData'] || {};
         payload['metaData'].isConfigured = true;
-        payload.arguments.execute.inArguments = JSON.parse(JSON.stringify(payload.arguments.execute.inArguments).replace(/EVENT_KEY/g, eventDefinitionKey));
+        payload.arguments.execute.inArguments = JSON.parse(
+            JSON.stringify(payload.arguments.execute.inArguments)
+                .replace(/EVENT_KEY/g, $('#eventKey').val()));
         console.log(JSON.stringify(payload));
         console.log(JSON.stringify(tokens));
         console.log(JSON.stringify(endpoints));
@@ -100,7 +102,7 @@ define(function (require) {
 
     connection.on('requestedInteractionDefaults', function (data) {
         console.log(JSON.stringify(data));
-        eventDefinitionKey = data.eventDefinitionKey;
+        $('#eventKey').val(data.eventDefinitionKey);
     });
 
     connection.on('requestedTriggerEventDefinition', function (data) {
