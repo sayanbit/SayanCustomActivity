@@ -75,6 +75,11 @@ define(function (require) {
         payload.arguments.execute.inArguments = JSON.parse(
             JSON.stringify(payload.arguments.execute.inArguments)
                 .replace(/EVENT_KEY/g, $('#eventKey').val()));
+
+        payload.arguments.execute.inArguments[1].dataExtensionName = $('#dename').val();
+        payload.arguments.execute.inArguments[2].fieldToUpdate = $('#fieldToUpdate').val();
+        payload.arguments.execute.inArguments[3].daysToSendEmailOn = $('#sendOnSpecificDays').val().join(';');
+
         console.log(JSON.stringify(payload));
         console.log(JSON.stringify(tokens));
         console.log(JSON.stringify(endpoints));

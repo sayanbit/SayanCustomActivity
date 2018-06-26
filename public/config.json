@@ -64,7 +64,13 @@
 					"contactIdentifier": "{{Contact.Key}}"
 				},
 				{
-					"eventKey": "{{Event.EVENT_KEY.SubscriberKey}}"
+					"dataExtensionName": ""
+				},
+				{
+					"fieldToUpdate": ""
+				},
+				{
+					"daysToSendEmailOn": ""
 				}
 			],
 			"outArguments": [],
@@ -116,7 +122,23 @@
 						}
 					},
 					{
-						"eventKey": {
+						"dataExtensionName": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"fieldToUpdate": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"daysToSendEmailOn": {
 							"dataType": "string",
 							"isNullable": false,
 							"direction": "in",

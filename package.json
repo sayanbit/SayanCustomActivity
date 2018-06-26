@@ -16,12 +16,15 @@
 	"dependencies": {
 		"body-parser": "^1.18.3",
 		"express": "^4.16.3",
-		"jsonwebtoken": "^8.3.0"
+		"jsonwebtoken": "^8.3.0",
+		"request": "^2.87.0"
 	},
 	"options": {
 		"salesforce": {
 			"marketingCloud": {
-				"jwtSecret": "hellomanjitsinghholidayactivity"
+				"jwtSecret": "hellomanjitsinghholidayactivity",
+				"clientId" : "gjesb9sy0sgh9a0u1tiettq9",
+				"clientSecret" : "MiJ9Y8eQx9KK1jdJYNOeOYIi"
 			}
 		}
 	}
