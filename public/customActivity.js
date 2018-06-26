@@ -102,11 +102,11 @@ define(function (require) {
 
     connection.on('requestedInteractionDefaults', function (data) {
         console.log(JSON.stringify(data));
-        $('#eventKey').val(data.eventDefinitionKey);
     });
 
     connection.on('requestedTriggerEventDefinition', function (data) {
         console.log(JSON.stringify(data));
+        $('#eventKey').val(data.eventDefinitionKey);
     });
 
     connection.on('initActivity', initialize);
