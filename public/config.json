@@ -64,9 +64,6 @@
 					"contactIdentifier": "{{Contact.Key}}"
 				},
 				{
-					"intKey": "{{Interaction.EVENT_KEY.SubscriberKey}}"
-				},
-				{
 					"eventKey": "{{Event.EVENT_KEY.SubscriberKey}}"
 				}
 			],
@@ -112,14 +109,6 @@
 				"inArguments": [
 					{
 						"contactIdentifier": {
-							"dataType": "string",
-							"isNullable": false,
-							"direction": "in",
-							"access": "visible"
-						}
-					},
-					{
-						"intKey": {
 							"dataType": "string",
 							"isNullable": false,
 							"direction": "in",
