@@ -9,8 +9,8 @@
 	"type": "RESTDECISION",
 	"lang": {
 		"en-US": {
-			"name": "Find Next Working Day",
-			"description": "A custom activity to check if the working it is a holiday or not."
+			"name": "Holiday Check",
+			"description": "A custom activity to check if the working it is a holiday or not or to send emails on specific days."
 		}
 	},
 	"configurationArguments": {

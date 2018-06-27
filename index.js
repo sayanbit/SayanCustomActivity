@@ -27,6 +27,8 @@ app.post('/activity/execute', (req, res) => {
             return res.status(400).end();
         } else {
             let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
+            console.log('----------------------RESPONSE--------------------------');
+            console.log(response.statusCode, res.getBody('utf8'));
             if (response.statusCode === 200) {
                 let parsedResponse = JSON.parse(res.getBody('utf8'));
                 return res.status(200).json({branchResult: 'forward'});
