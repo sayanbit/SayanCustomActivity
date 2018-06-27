@@ -3,66 +3,76 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Service Cloud Custom Split</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script data-main="js/main.js" type="text/javascript" src="js/require.js"></script>
-
-    <style type="text/css">
-        body {
-            padding: 15px;
-            margin: 0;
-            font-size: 11px;
-            color: #16325c;
-            font-family: "Salesforce Sans", Arial, sans-serif;
-        }
-
-        input {
-            font-family: inherit;
-            display: block;
-            padding: 4px 5px;
-            font-size: 11px;
-            color: #16325c;
-            background: #ffffff none;
-            border: 1px solid #d8dde6;
-            border-radius: 0.25rem;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-        }
-
-        input[type=text] {
-            width: 95%;
-            margin-bottom: 40px;
-        }
-
-        label {
-            margin-bottom: 5px;
-            font-size: 8pt;
-            color: #808080;
-            text-transform: uppercase;
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <style>
+        select option:hover {
+            background-color: #ffdd57;
         }
     </style>
 </head>
 <body>
-<div id="step1" class="step">
-    <input type="hidden" name="eventKey" id="eventKey">
-
-    <label for="dename">Data Extension Name</label>
-    <input type="text" name="dename" id="dename">
-
-    <label for="fieldToUpdate">Attribute to update</label>
-    <input type="text" name="fieldToUpdate" id="fieldToUpdate">
-
-    <label for="sendOnSpecificDays">Send On Specific Days</label>
-    <select size="8" id="sendOnSpecificDays" name="sendOnSpecificDays" multiple>
-        <option selected="selected" value="All">All</option>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-        <option value="Sunday">Sunday</option>
-    </select>
-</div>
+<section class="section" style="padding-top: 1rem">
+    <div class="container ">
+        <input type="hidden" name="eventKey" id="eventKey">
+        <div class="field">
+            <label for="dename" class="label is-small">Data Extension Name</label>
+            <div class="control">
+                <input name="dename" id="dename" class="input is-warning is-small" type="text"
+                       placeholder="Please add the data extension to update.">
+            </div>
+        </div>
+        <div class="field">
+            <label for="fieldToUpdate" class="label is-small">Attribute to update</label>
+            <div class="control">
+                <input type="text" name="fieldToUpdate" id="fieldToUpdate" class="input is-warning is-small"
+                       placeholder="Please write the name of the attribute in th data extension to update">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-half ">
+                <div class="select is-multiple is-small">
+                    <label class="label is-small" for="sendOnSpecificDays">Choose specific days to send email</label>
+                    <select id="sendOnSpecificDays" class="is-small" multiple size="8">
+                        <option selected="selected" value="All">All</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+                </div>
+            </div>
+            <div class="column  is-half ">
+                <div class="field">
+                    <label for="holidaydename" class="label is-small">Data Extension Name where holidays are
+                        stored</label>
+                    <div class="control">
+                        <input name="holidaydename" id="holidaydename" class="input is-warning is-small" type="text"
+                               placeholder="Please add the data extension where holidays are stored.">
+                    </div>
+                </div>
+                <article class="message is-warning is-small">
+                    <div class="message-header">
+                        <p>Important Note</p>
+                    </div>
+                    <div class="message-body">
+                        Please make sure that the data extension you select contains a column by name of
+                        <b>HOLIDAYDATE</b> of type Date. If <b class="is-capitalized">DATA EXTENSION NAME WHERE HOLIDAYS
+                        ARE STORED</b> is left blank, emails will be sent on days selected in left panel. If you provide
+                        a value of data extension, the emails will be sent on specific days selected and system will
+                        check if the holiday list contains today's date or not. Think of it as a union of two lists i.e
+                        list of days and list of holidays.
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

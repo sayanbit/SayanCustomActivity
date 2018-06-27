@@ -27,15 +27,24 @@ define(function (require) {
             console.log(data);
             payload = data;
 
+            // noinspection JSAnnotator
             if (data.arguments.execute.inArguments && data.arguments.execute.inArguments.length !== 0) {
+                // noinspection JSAnnotator
                 $('#dename').val(data.arguments.execute.inArguments[1].dataExtensionName);
+                // noinspection JSAnnotator
                 $('#fieldToUpdate').val(data.arguments.execute.inArguments[2].fieldToUpdate);
+                // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
                 $("select#sendOnSpecificDays option").each(function () {
                     if (selectedValues.indexOf($(this).val()) !== -1) {
                         $(this).attr('selected', true);
                     }
                 });
+                // noinspection JSAnnotator
+                if (data.arguments.execute.inArguments[4].holidayDataExtensionName) {
+                    // noinspection JSAnnotator
+                    $('#holidaydename').val(data.arguments.execute.inArguments[4].holidayDataExtensionName);
+                }
             }
         }
     }
@@ -79,10 +88,19 @@ define(function (require) {
 
     function save() {
         console.log('SAVE-------------------------------------------------------');
+        let selectedDays = $('#sendOnSpecificDays').val().join(';');
+        let dataExtensionName = $('#dename').val();
+        let fieldToUpdate = $('#fieldToUpdate').val();
+        let holidayDataExtensionName = $('#holidaydename').val();
+
         payload["name"] = `Check Holiday 
-        on [${$('#sendOnSpecificDays').val().join(';')}] 
-        and update DE [${$('#dename').val()}]  
-        and field on [${$('#fieldToUpdate').val()}]`;
+        on [${selectedDays}] 
+        and update DE [${dataExtensionName}]  
+        and field on [${fieldToUpdate}]`;
+
+        if (holidayDataExtensionName) {
+            payload["name"] += ` excluding holidays from ${holidayDataExtensionName} DE`;
+        }
 
         payload['arguments'] = payload['arguments'] || {};
         payload['arguments'].execute = payload['arguments'].execute || {};
@@ -92,9 +110,10 @@ define(function (require) {
             JSON.stringify(payload.arguments.execute.inArguments)
                 .replace(/EVENT_KEY/g, $('#eventKey').val()));
 
-        payload.arguments.execute.inArguments[1].dataExtensionName = $('#dename').val();
-        payload.arguments.execute.inArguments[2].fieldToUpdate = $('#fieldToUpdate').val();
-        payload.arguments.execute.inArguments[3].daysToSendEmailOn = $('#sendOnSpecificDays').val().join(';');
+        payload.arguments.execute.inArguments[1].dataExtensionName = dataExtensionName;
+        payload.arguments.execute.inArguments[2].fieldToUpdate = fieldToUpdate;
+        payload.arguments.execute.inArguments[3].daysToSendEmailOn = selectedDays;
+        payload.arguments.execute.inArguments[4].holidayDataExtensionName = holidayDataExtensionName;
 
         console.log(JSON.stringify(payload));
         console.log(JSON.stringify(tokens));

@@ -71,6 +71,9 @@
 				},
 				{
 					"daysToSendEmailOn": ""
+				},
+				{
+					"holidayDataExtensionName": ""
 				}
 			],
 			"outArguments": [],
@@ -87,11 +90,7 @@
 	"outcomes": [
 		{
 			"arguments": {
-				"branchResult": "is_holiday",
-				"some argument": "passed from config.json for buy_item"
-			},
-			"metaData": {
-				"label": "Is Holiday"
+				"branchResult": "forward"
 			}
 		},
 		{
@@ -106,8 +105,8 @@
 	],
 	"edit": {
 		"url": "https://ms-holiday-check.herokuapp.com/index.html",
-		"height": 400,
-		"width": 700
+		"height": 450,
+		"width": 800
 	},
 	"schema": {
 		"arguments": {
@@ -139,6 +138,14 @@
 					},
 					{
 						"daysToSendEmailOn": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"holidayDataExtensionName": {
 							"dataType": "string",
 							"isNullable": false,
 							"direction": "in",

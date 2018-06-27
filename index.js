@@ -29,9 +29,9 @@ app.post('/activity/execute', (req, res) => {
             let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
             if (response.statusCode === 200) {
                 let parsedResponse = JSON.parse(res.getBody('utf8'));
-                return res.status(200).json({branchResult: 'is_working'});
+                return res.status(200).json({branchResult: 'forward'});
             } else {
-                return res.status(200).json({branchResult: 'is_holiday'});
+                return res.status(400).end();
             }
         }
     });
