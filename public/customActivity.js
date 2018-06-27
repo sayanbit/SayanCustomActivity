@@ -79,6 +79,11 @@ define(function (require) {
 
     function save() {
         console.log('SAVE-------------------------------------------------------');
+        payload["name"] = `Check Holiday 
+        on ${[$('#sendOnSpecificDays').val().join(';')]} 
+        and update DE [${$('#dename').val()}]  
+        and field on [${$('#fieldToUpdate').val()}]`;
+
         payload['arguments'] = payload['arguments'] || {};
         payload['arguments'].execute = payload['arguments'].execute || {};
         payload['metaData'] = payload['metaData'] || {};
