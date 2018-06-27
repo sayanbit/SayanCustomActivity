@@ -15,7 +15,7 @@ module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, 
     jsonBody.values[fieldToUpdate] = checkBusinessDay();
 
     let res;
-    res = request('POST', BASE_URL + UPDATE_URL.replace(/DE_ID/g, '').replace(/SUB_KEY/g, subKey),
+    res = request('POST', BASE_URL + UPDATE_URL.replace(/DE_ID/g, dataExtensionKey).replace(/SUB_KEY/g, subKey),
         {
             json: jsonBody,
             headers: {
