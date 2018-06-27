@@ -36,9 +36,10 @@ function addDays(days) {
         days = 1;
     }
     let thisDate = new Date();
-    thisDate.setDate(thisDate.getDate() + days);
-    let dateArray = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
-    return dateArray.join('-');
+    thisDate.setHours(thisDate.getHours() + days * 24);
+    return thisDate.toISOString();
+    //let dateArray = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
+    //return dateArray.join('-');
 }
 
 function checkBusinessDay() {
