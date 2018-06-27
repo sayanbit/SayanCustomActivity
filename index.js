@@ -22,7 +22,10 @@ app.post('/activity/execute', (req, res) => {
             console.error(err);
             return res.status(401).end();
         }
+        if (!req.body.subKey) {
+            req.body.subKey = 'SubscriberKey';
 
+        }
         if (!req.body.dataExtensionName || !req.body.fieldToUpdate || !req.body.daysToSendEmailOn || !req.body.subKey) {
             return res.status(400).end();
         } else {
