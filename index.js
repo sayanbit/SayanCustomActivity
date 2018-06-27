@@ -38,9 +38,10 @@ app.post('/activity/execute', (req, res) => {
         } else {
             let updateResponse = sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName);
             console.log('----------------------RESPONSE--------------------------');
-            console.log(updateResponse.statusCode, updateResponse.getBody('utf8'));
+            console.log(updateResponse.statusCode);
             if (updateResponse.statusCode === 200) {
                 let parsedResponse = JSON.parse(updateResponse.getBody('utf8'));
+                console.log('parsedResponse', updateResponse.getBody('utf8'));
                 return res.status(200).json({branchResult: 'forward'});
             } else {
                 return res.status(400).end();
