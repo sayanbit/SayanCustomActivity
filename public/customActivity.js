@@ -80,7 +80,7 @@ define(function (require) {
     function save() {
         console.log('SAVE-------------------------------------------------------');
         payload["name"] = `Check Holiday 
-        on ${[$('#sendOnSpecificDays').val().join(';')]} 
+        on [${$('#sendOnSpecificDays').val().join(';')}] 
         and update DE [${$('#dename').val()}]  
         and field on [${$('#fieldToUpdate').val()}]`;
 
