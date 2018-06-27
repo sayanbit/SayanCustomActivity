@@ -12,14 +12,18 @@ module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, 
     let jsonBody = {
         "values": {}
     };
+    let accessToken = getAccessToken();
     jsonBody.values[fieldToUpdate] = checkBusinessDay();
-
+    console.log('BODY: ',
+        JSON.stringify(jsonBody),
+        BASE_URL + UPDATE_URL.replace(/DE_ID/g, dataExtensionKey).replace(/SUB_KEY/g, subKey),
+        "Bearer " + accessToken);
     let res;
     res = request('POST', BASE_URL + UPDATE_URL.replace(/DE_ID/g, dataExtensionKey).replace(/SUB_KEY/g, subKey),
         {
             json: jsonBody,
             headers: {
-                "Authorization": "Bearer " + getAccessToken()
+                "Authorization": "Bearer " + accessToken
             }
         }
     );
