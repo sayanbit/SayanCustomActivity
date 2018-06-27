@@ -3,6 +3,7 @@
 const Path = require('path');
 const Pkg = require(Path.join(__dirname, 'package.json'));
 const express = require('express');
+const sfmc = require('./sfmc-update');
 
 const app = express();
 
@@ -43,12 +44,29 @@ app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
     });
 });
 
+app.post('/activity/de/update', (req, res) => {
+    // Internal Calling to Update Data Extension
+    console.log('BODY' + JSON.stringify(req.body));
+    if (!req.body.dataExtensionName || !req.body.fieldToUpdate || !req.body.daysToSendEmailOn || !req.body.subKey) {
+        return res.status(400).end();
+    }
+    let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
+
+    if (response.statusCode === 200) {
+        let parsedResponse = JSON.parse(res.getBody('utf8'));
+        return res.status(200).json({success: true});
+    } else {
+        return res.status(400).end();
+    }
+});
+
+
 // Serve the custom activity's interface, config, etc.
 app.use(express.static(Path.join(__dirname, 'public')));
 
-// Start the server and listen on the port specified by heroku or defaulting to 12345
+// Start the server and listen on the port specified by Heroku or defaulting to 12345
 app.listen(process.env.PORT || 443, () => {
-    console.log('Service Cloud custom split backend is now running at port! ' + process.env.PORT || 443);
+    console.log('Service Cloud custom split backend is now running at port! ' + (process.env.PORT || 443));
 });
 
 
