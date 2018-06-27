@@ -60,7 +60,8 @@ define(function (require) {
                     description += ` and excluding holidays from ${holidayDataExtensionName} DE`;
                 }
                 if (selectedDays || dataExtensionName || fieldToUpdate) {
-                    $('#description').text(description).removeClass('is-hidden');
+                    $('#description').text(description);
+                    $('#criteria').removeClass('is-hidden');
 
                 } else {
                     $('#criteria').addClass('is-hidden');
