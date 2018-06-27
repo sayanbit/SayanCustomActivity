@@ -15,24 +15,8 @@ app.use(require('body-parser').raw({
 // Route that is called for every contact who reaches the custom split activity
 app.post('/activity/execute', (req, res) => {
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
-        console.log('DECODED EXECUTE');
+        console.log('REQUEST RECEIVED');
         console.log(JSON.stringify(decoded));
-        decoded = {
-            "inArguments": [
-                {"contactIdentifier": "7117"},
-                {"dataExtensionName": "NextBusinessDay"},
-                {"fieldToUpdate": "NextBusinessDay"},
-                {"daysToSendEmailOn": "Tuesday;Wednesday;Thursday"},
-                {"holidayDataExtensionName": ""}],
-            "outArguments": [],
-            "activityObjectID": "fd2668f6-805f-421f-90f4-3e88351d19a9",
-            "journeyId": "87eeacd7-4a80-43f3-8943-af5d9f3a0169",
-            "activityId": "fd2668f6-805f-421f-90f4-3e88351d19a9",
-            "definitionInstanceId": "1087a6b0-52b1-4e96-b16d-982bc21b4469",
-            "activityInstanceId": "ae93fa95-9e19-4c73-84c5-adde4e47e49e",
-            "keyValue": "7117",
-            "mode": 0
-        }
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
@@ -56,7 +40,7 @@ app.post('/activity/execute', (req, res) => {
             console.log('----------------------RESPONSE--------------------------');
             console.log(response.statusCode, res.getBody('utf8'));
             if (response.statusCode === 200) {
-                let parsedResponse = JSON.parse(res.getBody('utf8'));
+                let parsedResponse = JSON.parse(response.getBody('utf8'));
                 return res.status(200).json({branchResult: 'forward'});
             } else {
                 return res.status(400).end();
