@@ -29,7 +29,7 @@ define(function (require) {
 
             if (data.arguments.execute.inArguments && data.arguments.execute.inArguments.length !== 0) {
                 $('#dename').val(data.arguments.execute.inArguments[1].dataExtensionName);
-                $('#fieldToUpdate').val(data.arguments.execute.inArguments[1].fieldToUpdate);
+                $('#fieldToUpdate').val(data.arguments.execute.inArguments[2].fieldToUpdate);
 
             }
         }
