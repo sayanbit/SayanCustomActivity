@@ -103,7 +103,6 @@ define(function (require) {
             console.error(data.error);
         } else {
             tokens = data;
-            $('#tokens').html(JSON.stringify(tokens));
         }
     });
 
@@ -112,7 +111,6 @@ define(function (require) {
             console.error(data.error);
         } else {
             endpoints = data;
-            $('#endpoints').html(JSON.stringify(endpoints));
         }
     });
 
