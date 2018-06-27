@@ -30,9 +30,9 @@ define(function (require) {
             // noinspection JSAnnotator
             if (data.arguments.execute.inArguments && data.arguments.execute.inArguments.length !== 0) {
                 // noinspection JSAnnotator
-                $('#dename').val(data.arguments.execute.inArguments[1].dataExtensionName);
+                $('input#dename').val(data.arguments.execute.inArguments[1].dataExtensionName);
                 // noinspection JSAnnotator
-                $('#fieldToUpdate').val(data.arguments.execute.inArguments[2].fieldToUpdate);
+                $('input#fieldToUpdate').val(data.arguments.execute.inArguments[2].fieldToUpdate);
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
                 $("select#sendOnSpecificDays option").each(function () {
@@ -43,7 +43,27 @@ define(function (require) {
                 // noinspection JSAnnotator
                 if (data.arguments.execute.inArguments[4].holidayDataExtensionName) {
                     // noinspection JSAnnotator
-                    $('#holidaydename').val(data.arguments.execute.inArguments[4].holidayDataExtensionName);
+                    $('input#holidaydename').val(data.arguments.execute.inArguments[4].holidayDataExtensionName);
+                }
+
+                let selectedDays = $('#sendOnSpecificDays').val().join(';');
+                let dataExtensionName = $('#dename').val();
+                let fieldToUpdate = $('#fieldToUpdate').val();
+                let holidayDataExtensionName = $('#holidaydename').val();
+
+                let description = `Send emails only   
+                on [${selectedDays}] 
+                and update DE [${dataExtensionName}]  
+                and field on [${fieldToUpdate}]`;
+
+                if (holidayDataExtensionName) {
+                    description += ` and excluding holidays from ${holidayDataExtensionName} DE`;
+                }
+                if (selectedDays || dataExtensionName || fieldToUpdate) {
+                    $('#description').text(description).removeClass('is-hidden');
+
+                } else {
+                    $('#criteria').addClass('is-hidden');
                 }
             }
         }
@@ -92,15 +112,6 @@ define(function (require) {
         let dataExtensionName = $('#dename').val();
         let fieldToUpdate = $('#fieldToUpdate').val();
         let holidayDataExtensionName = $('#holidaydename').val();
-
-        payload["name"] = `Check Holiday 
-        on [${selectedDays}] 
-        and update DE [${dataExtensionName}]  
-        and field on [${fieldToUpdate}]`;
-
-        if (holidayDataExtensionName) {
-            payload["name"] += ` excluding holidays from ${holidayDataExtensionName} DE`;
-        }
 
         payload['arguments'] = payload['arguments'] || {};
         payload['arguments'].execute = payload['arguments'].execute || {};

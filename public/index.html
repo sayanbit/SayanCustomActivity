@@ -18,6 +18,11 @@
 <section class="section" style="padding-top: 1rem">
     <div class="container ">
         <input type="hidden" name="eventKey" id="eventKey">
+        <article id="criteria" class="message is-small is-hidden">
+            <div class="message-body" id="description">
+
+            </div>
+        </article>
         <div class="field">
             <label for="dename" class="label is-small">Data Extension Name</label>
             <div class="control">
@@ -37,7 +42,7 @@
                 <div class="select is-multiple is-small">
                     <label class="label is-small" for="sendOnSpecificDays">Choose specific days to send email</label>
                     <select id="sendOnSpecificDays" class="is-small" multiple size="8">
-                        <option selected="selected" value="All">All</option>
+                        <option selected="selected" value="All Days">All Days</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
                         <option value="Wednesday">Wednesday</option>
