@@ -43,51 +43,53 @@
                     </div>
                 </div>
             </div>
-            <div class="columns">
-                <div class="column is-half ">
-                    <div class="select is-multiple is-small">
-                        <label class="label is-small" for="sendOnSpecificDays">Choose specific days to send
-                            email</label>
-                        <select required id="sendOnSpecificDays" class="is-small" multiple size="8">
-                            <option value="All Days">All Days</option>
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="column  is-half ">
-                    <div class="field">
-                        <label for="holidaydename" class="label is-small">Data Extension Name where holidays are
-                            stored</label>
-                        <div class="control">
-                            <input name="holidaydename" id="holidaydename" class="input is-warning is-small" type="text"
-                                   placeholder="Please add the data extension where holidays are stored.">
-                        </div>
-                    </div>
-                    <article class="message is-warning is-small">
-                        <div class="message-header">
-                            <p>Important Note</p>
-                        </div>
-                        <div class="message-body">
-                            Please make sure that the data extension you select contains a column by name of
-                            <b>HOLIDAYDATE</b> of type Date. If <b class="is-capitalized">DATA EXTENSION NAME WHERE
-                            HOLIDAYS
-                            ARE STORED</b> is left blank, emails will be sent on days selected in left panel. If you
-                            provide
-                            a value of data extension, the emails will be sent on specific days selected and system will
-                            check if the holiday list contains today's date or not. Think of it as a union of two lists
-                            i.e
-                            list of days and list of holidays.
-                        </div>
-                    </article>
+        </div>
+        <hr/>
+        <div class="columns">
+            <div class="column is-half ">
+                <div class="select is-multiple is-small">
+                    <label class="label is-small" for="sendOnSpecificDays">Choose specific days to send
+                        email</label>
+                    <select required id="sendOnSpecificDays" class="is-small" multiple size="8">
+                        <option value="All Days">All Days</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
                 </div>
             </div>
+            <div class="column  is-half ">
+                <div class="field">
+                    <label for="holidaydename" class="label is-small">Data Extension Name where holidays are
+                        stored</label>
+                    <div class="control">
+                        <input name="holidaydename" id="holidaydename" class="input is-warning is-small" type="text"
+                               placeholder="Please add the data extension where holidays are stored.">
+                    </div>
+                </div>
+                <article class="message is-warning is-small">
+                    <div class="message-header">
+                        <p>Important Note</p>
+                    </div>
+                    <div class="message-body">
+                        Please make sure that the data extension you select contains a column by name of
+                        <b>HOLIDAYDATE</b> of type Date. If <b class="is-capitalized">DATA EXTENSION NAME WHERE
+                        HOLIDAYS
+                        ARE STORED</b> is left blank, emails will be sent on days selected in left panel. If you
+                        provide
+                        a value of data extension, the emails will be sent on specific days selected and system will
+                        check if the holiday list contains today's date or not. Think of it as a union of two lists
+                        i.e
+                        list of days and list of holidays.
+                    </div>
+                </article>
+            </div>
         </div>
+    </div>
 </section>
 </body>
 </html>
