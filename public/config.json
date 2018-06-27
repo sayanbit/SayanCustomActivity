@@ -91,15 +91,9 @@
 		{
 			"arguments": {
 				"branchResult": "forward"
-			}
-		},
-		{
-			"arguments": {
-				"branchResult": "is_working",
-				"some argument": "passed from config.json for hold_item"
 			},
 			"metaData": {
-				"label": "Is Working"
+				"label": "Join to Wait Element"
 			}
 		}
 	],
