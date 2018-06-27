@@ -106,8 +106,8 @@
 	],
 	"edit": {
 		"url": "https://ms-holiday-check.herokuapp.com/index.html",
-		"height": 500,
-		"width": 500
+		"height": 400,
+		"width": 700
 	},
 	"schema": {
 		"arguments": {
