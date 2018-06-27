@@ -23,10 +23,16 @@ app.post('/activity/execute', (req, res) => {
             return res.status(401).end();
         }
 
-        if (Math.floor(Math.random() * 100) % 2 === 0) {
-            return res.status(200).json({branchResult: 'is_working'});
+        if (!req.body.dataExtensionName || !req.body.fieldToUpdate || !req.body.daysToSendEmailOn || !req.body.subKey) {
+            return res.status(400).end();
         } else {
-            return res.status(200).json({branchResult: 'is_holiday'});
+            let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
+            if (response.statusCode === 200) {
+                let parsedResponse = JSON.parse(res.getBody('utf8'));
+                return res.status(200).json({branchResult: 'is_working'});
+            } else {
+                return res.status(200).json({branchResult: 'is_holiday'});
+            }
         }
     });
 });
