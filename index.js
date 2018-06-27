@@ -17,19 +17,42 @@ app.post('/activity/execute', (req, res) => {
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         console.log('DECODED EXECUTE');
         console.log(JSON.stringify(decoded));
+        decoded = {
+            "inArguments": [
+                {"contactIdentifier": "7117"},
+                {"dataExtensionName": "NextBusinessDay"},
+                {"fieldToUpdate": "NextBusinessDay"},
+                {"daysToSendEmailOn": "Tuesday;Wednesday;Thursday"},
+                {"holidayDataExtensionName": ""}],
+            "outArguments": [],
+            "activityObjectID": "fd2668f6-805f-421f-90f4-3e88351d19a9",
+            "journeyId": "87eeacd7-4a80-43f3-8943-af5d9f3a0169",
+            "activityId": "fd2668f6-805f-421f-90f4-3e88351d19a9",
+            "definitionInstanceId": "1087a6b0-52b1-4e96-b16d-982bc21b4469",
+            "activityInstanceId": "ae93fa95-9e19-4c73-84c5-adde4e47e49e",
+            "keyValue": "7117",
+            "mode": 0
+        }
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
             return res.status(401).end();
         }
+
+        let subKey = decoded.inArguments[0].contactIdentifier;
+        let dataExtensionName = decoded.inArguments[1].dataExtensionName;
+        let fieldToUpdate = decoded.inArguments[2].fieldToUpdate;
+        let daysToSendEmailOn = decoded.inArguments[3].daysToSendEmailOn;
+        let holidayDataExtensionName = decoded.inArguments[4].holidayDataExtensionName;
+
         if (!req.body.subKey) {
             req.body.subKey = 'SubscriberKey';
 
         }
-        if (!req.body.dataExtensionName || !req.body.fieldToUpdate || !req.body.daysToSendEmailOn || !req.body.subKey) {
+        if (!dataExtensionName || !fieldToUpdate || !daysToSendEmailOn || !subKey) {
             return res.status(400).end();
         } else {
-            let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
+            let response = sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName);
             console.log('----------------------RESPONSE--------------------------');
             console.log(response.statusCode, res.getBody('utf8'));
             if (response.statusCode === 200) {
@@ -54,23 +77,6 @@ app.post(/\/activity\/(save|publish|validate|stop)/, (req, res) => {
         return res.status(200).json({success: true});
     });
 });
-
-app.post('/activity/de/update', (req, res) => {
-    // Internal Calling to Update Data Extension
-    console.log('BODY' + JSON.stringify(req.body));
-    if (!req.body.dataExtensionName || !req.body.fieldToUpdate || !req.body.daysToSendEmailOn || !req.body.subKey) {
-        return res.status(400).end();
-    }
-    let response = sfmc.updateDataExtension(req.body.dataExtensionName, req.body.fieldToUpdate, req.body.subKey);
-
-    if (response.statusCode === 200) {
-        let parsedResponse = JSON.parse(res.getBody('utf8'));
-        return res.status(200).json({success: true});
-    } else {
-        return res.status(400).end();
-    }
-});
-
 
 // Serve the custom activity's interface, config, etc.
 app.use(express.static(Path.join(__dirname, 'public')));
