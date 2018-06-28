@@ -36,7 +36,7 @@ app.post('/activity/execute', (req, res) => {
         if (!dataExtensionName || !fieldToUpdate || !daysToSendEmailOn || !subKey) {
             return res.status(400).end();
         } else {
-            let updateResponse = sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName);
+            let updateResponse = sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName, daysToSendEmailOn);
             console.log('----------------------RESPONSE--------------------------');
             console.log(updateResponse.statusCode);
             if (updateResponse.statusCode === 200) {

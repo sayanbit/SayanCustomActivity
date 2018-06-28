@@ -8,12 +8,12 @@ const Pkg = require(Path.join(__dirname, 'package.json'));
 let authResponse = '';
 
 
-module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, subKey, holidayDataExtensionName) {
+module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, subKey, holidayDataExtensionName, daysToSendEmailOn) {
     let jsonBody = {
         "values": {}
     };
     let accessToken = getAccessToken();
-    jsonBody.values[fieldToUpdate] = checkBusinessDay();
+    jsonBody.values[fieldToUpdate] = checkBusinessDay(holidayDataExtensionName, daysToSendEmailOn);
     console.log('BODY: ',
         JSON.stringify(jsonBody),
         BASE_URL + UPDATE_URL.replace(/DE_ID/g, dataExtensionKey).replace(/SUB_KEY/g, subKey),
@@ -31,19 +31,17 @@ module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, 
 
 };
 
-function addDays(days) {
-    if (!days) {
-        days = 1;
-    }
+function checkBusinessDay(holidayDataExtensionName, daysToSendEmailOn) {
+    const daysArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let thisDate = new Date();
-    thisDate.setHours(thisDate.getHours() + days * 24);
+    let currentDay = daysArray[thisDate.getDay()];
+    while (daysToSendEmailOn.indexOf(currentDay) === -1) {
+        thisDate.setHours(thisDate.getHours() + 24);
+        currentDay = daysArray[thisDate.getDay()];
+    }
     return thisDate.toISOString();
     //let dateArray = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
     //return dateArray.join('-');
-}
-
-function checkBusinessDay() {
-    return addDays(1);
 }
 
 function getAccessToken() {
