@@ -62,8 +62,8 @@ define(function (require) {
 
                 let description = `Send emails only   
                 on [${selectedDays}] 
-                and update DE [${dataExtensionName}]  
-                and field on [${fieldToUpdate}]`;
+                and update DE [${dataExtensionName}] attribute 
+                [${fieldToUpdate}] with next business day`;
 
                 if (holidayDataExtensionName) {
                     description += ` and excluding holidays from ${holidayDataExtensionName} DE`;
