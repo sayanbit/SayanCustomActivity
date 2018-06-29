@@ -45,13 +45,11 @@ define(function (require) {
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
 
-                selectedDaysArray = [];
+                selectedDaysArray = selectedValues.split(';');
+
                 $('#specificDaysButtons span').each(function () {
                     if (selectedValues.indexOf($(this).val()) !== -1) {
-                        $(this).toggleClass('is-selected is-success');
-                    }
-                    if ($(this).hasClass("is-selected")) {
-                        selectedDaysArray.push($(this).prop('data-value'));
+                        $(this).addClass('is-selected is-success');
                     }
                 });
                 // noinspection JSAnnotator
@@ -72,7 +70,7 @@ define(function (require) {
                 if (holidayDataExtensionName) {
                     description += ` and excluding holidays from ${holidayDataExtensionName} DE`;
                 }
-                if (selectedDays || dataExtensionName || fieldToUpdate) {
+                if (selectedDaysArray.length > 0 || selectedDays || dataExtensionName || fieldToUpdate) {
                     $('#description').text(description);
                     $('#criteria').removeClass('is-hidden');
 
@@ -122,7 +120,12 @@ define(function (require) {
 
     function save() {
         console.log('SAVE-------------------------------------------------------');
-        let selectedDays = $('#sendOnSpecificDays').val().join(';');
+        selectedDaysArray = [];
+
+        $('#specificDaysButtons span.is-selected').each(function () {
+            selectedDaysArray.push($(this).html())
+        });
+        let selectedDays = selectedDaysArray.join(';');
         let dataExtensionName = $('#dename').val();
         let fieldToUpdate = $('#fieldToUpdate').val();
         let holidayDataExtensionName = $('#holidaydename').val();
