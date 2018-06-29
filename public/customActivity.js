@@ -25,7 +25,7 @@ define(function (require) {
             $('#message-body').toggleClass('is-hidden');
         });
 
-        $('#specificDaysButtons span').on('click', function () {
+        $('#sendOnSpecificDays span').on('click', function () {
             $(this).toggleClass('is-selected is-success');
         })
     });
@@ -45,7 +45,7 @@ define(function (require) {
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
 
-                $('#specificDaysButtons span').each(function () {
+                $('#sendOnSpecificDays span').each(function () {
                     if (selectedValues.indexOf(this.innerHTML) !== -1) {
                         $(this).addClass('is-selected is-success');
                     }
@@ -120,7 +120,7 @@ define(function (require) {
         console.log('SAVE-------------------------------------------------------');
         selectedDaysArray = [];
 
-        $('#specificDaysButtons span.is-selected').each(function () {
+        $('#sendOnSpecificDays span.is-selected').each(function () {
             selectedDaysArray.push($(this).html())
         });
         let selectedDays = selectedDaysArray.join(';');
