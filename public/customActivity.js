@@ -45,10 +45,8 @@ define(function (require) {
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
 
-                selectedDaysArray = selectedValues.split(';');
-
-                $('#specificDaysButtons span').each(function () {
-                    if (selectedValues.indexOf($(this).val()) !== -1) {
+                $('#specificDaysButtons span').forEach(function () {
+                    if (selectedValues.indexOf(this.innerHTML) !== -1) {
                         $(this).addClass('is-selected is-success');
                     }
                 });
@@ -57,7 +55,7 @@ define(function (require) {
                     // noinspection JSAnnotator
                     $('input#holidaydename').val(data.arguments.execute.inArguments[4].holidayDataExtensionName);
                 }
-                let selectedDays = selectedDaysArray.join(';');
+                let selectedDays = selectedValues;
                 let dataExtensionName = $('#dename').val();
                 let fieldToUpdate = $('#fieldToUpdate').val();
                 let holidayDataExtensionName = $('#holidaydename').val();
