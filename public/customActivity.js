@@ -45,7 +45,7 @@ define(function (require) {
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
 
-                $('#specificDaysButtons span').forEach(function () {
+                $('#specificDaysButtons span').each(function () {
                     if (selectedValues.indexOf(this.innerHTML) !== -1) {
                         $(this).addClass('is-selected is-success');
                     }
