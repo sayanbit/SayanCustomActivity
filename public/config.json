@@ -52,8 +52,8 @@
 	],
 	"userInterfaces": {
 		"configModal": {
-			"height": 400,
-			"width": 600,
+			"height": 475,
+			"width": 900,
 			"fullscreen": true
 		}
 	},
@@ -100,7 +100,7 @@
 	"edit": {
 		"url": "https://ms-holiday-check.herokuapp.com/index.html",
 		"height": 475,
-		"width": 800
+		"width": 900
 	},
 	"schema": {
 		"arguments": {

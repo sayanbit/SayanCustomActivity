@@ -6,6 +6,7 @@ define(function (require) {
     let payload = {};
     let tokens = {};
     let endpoints = {};
+    let selectedDaysArray = [];
     let steps = [
         {'key': 'step1', 'label': 'Holiday Check'}
     ];
@@ -19,6 +20,14 @@ define(function (require) {
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteractionDefaults');
         connection.trigger('requestTriggerEventDefinition');
+
+        $('#message-block').on('click', function () {
+            $('#message-body').toggleClass('is-hidden');
+        });
+
+        $('#specificDaysButtons span').on('click', function () {
+            $(this).toggleClass('is-selected is-success');
+        })
     });
 
     function initialize(data) {
@@ -35,9 +44,14 @@ define(function (require) {
                 $('input#fieldToUpdate').val(data.arguments.execute.inArguments[2].fieldToUpdate);
                 // noinspection JSAnnotator
                 let selectedValues = data.arguments.execute.inArguments[3].daysToSendEmailOn;
-                $("select#sendOnSpecificDays option").each(function () {
+
+                selectedDaysArray = [];
+                $('#specificDaysButtons span').each(function () {
                     if (selectedValues.indexOf($(this).val()) !== -1) {
-                        $(this).attr('selected', true);
+                        $(this).toggleClass('is-selected is-success');
+                    }
+                    if ($(this).hasClass("is-selected")) {
+                        selectedDaysArray.push($(this).prop('data-value'));
                     }
                 });
                 // noinspection JSAnnotator
@@ -45,8 +59,7 @@ define(function (require) {
                     // noinspection JSAnnotator
                     $('input#holidaydename').val(data.arguments.execute.inArguments[4].holidayDataExtensionName);
                 }
-
-                let selectedDays = $('#sendOnSpecificDays').val().join(';');
+                let selectedDays = selectedDaysArray.join(';');
                 let dataExtensionName = $('#dename').val();
                 let fieldToUpdate = $('#fieldToUpdate').val();
                 let holidayDataExtensionName = $('#holidaydename').val();

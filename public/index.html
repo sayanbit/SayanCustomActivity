@@ -23,23 +23,62 @@
 
             </div>
         </article>
-        <div class="columns">
-            <div class="column is-half ">
+        <div class="columns is-multiline">
+            <div class="column is-full is-unselectable">
+                <article class="message is-warning is-small" id="message-block">
+                    <div class="message-header" id="message-header">
+                        <p>Instructions - Click to toggle</p>
+                    </div>
+                    <div class="message-body is-hidden" id="message-body">
+                        Please make sure that the data extension you select contains a column by name of
+                        <b>HOLIDAYDATE</b> of type Date. If <b class="is-capitalized">DATA EXTENSION NAME WHERE
+                        HOLIDAYS
+                        ARE STORED</b> is left blank, emails will be sent on days selected in left panel. If you
+                        provide
+                        a value of data extension, the emails will be sent on specific days selected and system will
+                        check if the holiday list contains today's date or not. Think of it as a union of two lists
+                        i.e
+                        list of days and list of holidays.
+                    </div>
+                </article>
+            </div>
+            <div class="column is-one-quarter ">
                 <div class="field">
                     <label for="dename" class="label is-small">Data Extension Name</label>
                     <div class="control">
                         <input name="dename" id="dename" class="input is-warning is-small" required type="text"
-                               placeholder="Please add the data extension to update.">
+                               title="Please add the data extension to update.">
                     </div>
                 </div>
             </div>
-            <div class="column is-half ">
+            <div class="column is-one-quarter ">
                 <div class="field">
                     <label for="fieldToUpdate" class="label is-small">Attribute to update</label>
                     <div class="control">
                         <input type="text" required name="fieldToUpdate" id="fieldToUpdate"
                                class="input is-warning is-small"
-                               placeholder="Please write the name of the attribute in th data extension to update">
+                               title="Please write the name of the attribute in the data extension to update">
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="field">
+                    <label for="holidaydename" class="label is-small">Data Extension Name where holidays are
+                        stored</label>
+                    <div class="control">
+                        <input name="holidaydename" id="holidaydename" class="input is-warning is-small" type="text"
+                               title="Please add the data extension where holidays are stored.">
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-quarter ">
+                <div class="field">
+                    <label for="fieldToCHeckHoliday" class="label is-small">Attribute where holiday date is
+                        stored</label>
+                    <div class="control">
+                        <input type="text" required name="fieldToUpdate" id="fieldToCHeckHoliday"
+                               class="input is-warning is-small"
+                               title="Name of the attribute in the Holiday data extension to check">
                     </div>
                 </div>
             </div>
@@ -47,7 +86,7 @@
         <hr/>
         <div class="columns">
             <div class="column is-half ">
-                <div class="select is-multiple is-small">
+                <div class="select is-multiple is-small is-warning">
                     <label class="label is-small" for="sendOnSpecificDays">Choose specific days to send
                         email</label>
                     <select required id="sendOnSpecificDays" class="is-small" multiple size="8">
@@ -61,32 +100,123 @@
                         <option value="Sunday">Sunday</option>
                     </select>
                 </div>
-            </div>
-            <div class="column  is-half ">
-                <div class="field">
-                    <label for="holidaydename" class="label is-small">Data Extension Name where holidays are
-                        stored</label>
-                    <div class="control">
-                        <input name="holidaydename" id="holidaydename" class="input is-warning is-small" type="text"
-                               placeholder="Please add the data extension where holidays are stored.">
-                    </div>
+                <div class="buttons has-addons" id="specificDaysButtons">
+                    <span class="button is-small" data-value="Monday">Monday</span>
+                    <span class="button is-small" data-value="Tuesday">Tuesday</span>
+                    <span class="button is-small" data-value="Wednesday">Wednesday</span>
+                    <span class="button is-small" data-value="Thursday">Thursday</span>
+                    <span class="button is-small" data-value="Friday">Friday</span>
+                    <span class="button is-small" data-value="Saturday">Saturday</span>
+                    <span class="button is-small" data-value="Sunday">Sunday</span>
                 </div>
-                <article class="message is-warning is-small">
-                    <div class="message-header">
-                        <p>Important Note</p>
-                    </div>
-                    <div class="message-body">
-                        Please make sure that the data extension you select contains a column by name of
-                        <b>HOLIDAYDATE</b> of type Date. If <b class="is-capitalized">DATA EXTENSION NAME WHERE
-                        HOLIDAYS
-                        ARE STORED</b> is left blank, emails will be sent on days selected in left panel. If you
-                        provide
-                        a value of data extension, the emails will be sent on specific days selected and system will
-                        check if the holiday list contains today's date or not. Think of it as a union of two lists
-                        i.e
-                        list of days and list of holidays.
-                    </div>
-                </article>
+            </div>
+            <div class="column is-half ">
+                <div class="select is-multiple is-small is-warning">
+                    <label class="label is-small" for="timeZone">Timezone</label>
+                    <select id="timeZone" required class="is-small" role="menu">
+                        <option value="Morocco Standard Time">(GMT) Casablanca *</option>
+                        <option value="GMT Standard Time">(GMT) Duboptionn, Edinburgh, optionsbon, London *</option>
+                        <option value="Greenwich Standard Time">(GMT) Monrovia, Reykjavik</option>
+                        <option value="W. Europe Standard Time">(GMT+01:00) Amsterdam, Beroptionn, Bern, Rome,
+                            Stockholm,
+                            Vienna *
+                        </option>
+                        <option value="Central Europe Standard Time">(GMT+01:00) Belgrade, Bratislava, Budapest,
+                            Ljubljana,
+                            Prague *
+                        </option>
+                        <option value="Romance Standard Time">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris *</option>
+                        <option value="Central European Standard Time">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb *
+                        </option>
+                        <option value="W. Central Africa Standard Time">(GMT+01:00) West Central Africa</option>
+                        <option value="Jordan Standard Time">(GMT+02:00) Amman *</option>
+                        <option value="GTB Standard Time">(GMT+02:00) Athens, Bucharest, Istanbul *</option>
+                        <option value="Middle East Standard Time">(GMT+02:00) Beirut *</option>
+                        <option value="Egypt Standard Time">(GMT+02:00) Cairo</option>
+                        <option value="South Africa Standard Time">(GMT+02:00) Harare, Pretoria</option>
+                        <option value="FLE Standard Time">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Taloptionnn, Vilnius
+                            *
+                        </option>
+                        <option value="Israel Standard Time">(GMT+02:00) Jerusalem *</option>
+                        <option value="E. Europe Standard Time">(GMT+02:00) Minsk *</option>
+                        <option value="Namibia Standard Time">(GMT+01:00) Windhoek *</option>
+                        <option value="Arabic Standard Time">(GMT+03:00) Baghdad *</option>
+                        <option value="Arab Standard Time">(GMT+03:00) Kuwait, Riyadh</option>
+                        <option value="Russian Standard Time">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+                        <option value="E. Africa Standard Time">(GMT+03:00) Nairobi</option>
+                        <option value="Georgian Standard Time">(GMT+04:00) Tbioptionsi</option>
+                        <option value="Iran Standard Time">(GMT+03:30) Tehran *</option>
+                        <option value="Arabian Standard Time">(GMT+04:00) Abu Dhabi, Muscat</option>
+                        <option value="Azerbaijan Standard Time">(GMT+04:00) Baku *</option>
+                        <option value="Caucasus Standard Time">(GMT+04:00) Yerevan *</option>
+                        <option value="Mauritius Standard Time">(GMT+04:00) Port Louis *</option>
+                        <option value="Afghanistan Standard Time">(GMT+04:30) Kabul</option>
+                        <option value="Ekaterinburg Standard Time">(GMT+05:00) Ekaterinburg *</option>
+                        <option value="Pakistan Standard Time">(GMT+05:00) Islamabad, Karachi *</option>
+                        <option value="West Asia Standard Time">(GMT+05:00) Tashkent</option>
+                        <option value="India Standard Time">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                        <option value="Sri Lanka Standard Time" data-selected="true">(GMT+05:30) Sri Jayawardenepura
+                        </option>
+                        <option value="Nepal Standard Time">(GMT+05:45) Kathmandu</option>
+                        <option value="N. Central Asia Standard Time">(GMT+06:00) Novosibirsk *</option>
+                        <option value="Central Asia Standard Time">(GMT+06:00) Astana</option>
+                        <option value="Myanmar Standard Time">(GMT+06:30) Yangon (Rangoon)</option>
+                        <option value="SE Asia Standard Time">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                        <option value="North Asia Standard Time">(GMT+07:00) Krasnoyarsk *</option>
+                        <option value="China Standard Time">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+                        <option value="North Asia East Standard Time">(GMT+08:00) Irkutsk *</option>
+                        <option value="Singapore Standard Time">(GMT+08:00) Kuala Lumpur, Singapore</option>
+                        <option value="W. Austraoptiona Standard Time">(GMT+08:00) Perth *</option>
+                        <option value="Taipei Standard Time">(GMT+08:00) Taipei</option>
+                        <option value="Tokyo Standard Time">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                        <option value="Korea Standard Time">(GMT+09:00) Seoul</option>
+                        <option value="Yakutsk Standard Time">(GMT+09:00) Yakutsk *</option>
+                        <option value="Cen. Austraoptiona Standard Time">(GMT+09:30) Adelaide *</option>
+                        <option value="AUS Central Standard Time">(GMT+09:30) Darwin</option>
+                        <option value="E. Austraoptiona Standard Time">(GMT+10:00) Brisbane</option>
+                        <option value="AUS Eastern Standard Time">(GMT+10:00) Canberra, Melbourne, Sydney *</option>
+                        <option value="West Pacific Standard Time">(GMT+10:00) Guam, Port Moresby</option>
+                        <option value="Tasmania Standard Time">(GMT+10:00) Hobart *</option>
+                        <option value="Vladivostok Standard Time">(GMT+10:00) Vladivostok *</option>
+                        <option value="Central Pacific Standard Time">(GMT+11:00) Magadan, Solomon Is., New Caledonia
+                        </option>
+                        <option value="New Zealand Standard Time">(GMT+12:00) Auckland, Weloptionngton *</option>
+                        <option value="Fiji Standard Time">(GMT+12:00) Fiji *</option>
+                        <option value="Tonga Standard Time">(GMT+13:00) Nukualofa</option>
+                        <option value="Azores Standard Time">(GMT-01:00) Azores *</option>
+                        <option value="Cape Verde Standard Time">(GMT-01:00) Cape Verde Is.</option>
+                        <option value="Mid-Atlantic Standard Time">(GMT-02:00) Mid-Atlantic *</option>
+                        <option value="E. South America Standard Time">(GMT-03:00) Brasioptiona *</option>
+                        <option value="Argentina Standard Time">(GMT-03:00) Buenos Aires *</option>
+                        <option value="SA Western Standard Time">(GMT-04:00) La Paz</option>
+                        <option value="Greenland Standard Time">(GMT-03:00) Greenland *</option>
+                        <option value="Montevideo Standard Time">(GMT-03:00) Montevideo *</option>
+                        <option value="Newfoundland Standard Time">(GMT-03:30) Newfoundland *</option>
+                        <option value="Atlantic Standard Time">(GMT-04:00) Atlantic Time (Canada) *</option>
+                        <option value="Central Brazioptionan Standard Time">(GMT-04:00) Manaus *</option>
+                        <option value="Pacific SA Standard Time">(GMT-04:00) Santiago *</option>
+                        <option value="Venezuela Standard Time">(GMT-04:30) Caracas</option>
+                        <option value="SA Pacific Standard Time">(GMT-05:00) Bogota, optionma, Quito</option>
+                        <option value="Eastern Standard Time">(GMT-05:00) Eastern Time (US &amp; Canada) *</option>
+                        <option value="US Eastern Standard Time">(GMT-05:00) Indiana (East) *</option>
+                        <option value="Central America Standard Time">(GMT-06:00) Central America</option>
+                        <option value="Central Standard Time">(GMT-06:00) Central Time (US &amp; Canada) *</option>
+                        <option value="Central Standard Time (Mexico)">(GMT-06:00) Guadalajara, Mexico City, Monterrey -
+                            Old
+                        </option>
+                        <option value="Canada Central Standard Time">(GMT-06:00) Saskatchewan</option>
+                        <option value="US Mountain Standard Time">(GMT-07:00) Arizona</option>
+                        <option value="Mountain Standard Time (Mexico)">(GMT-07:00) Chihuahua, La Paz, Mazatlan - Old
+                        </option>
+                        <option value="Mountain Standard Time">(GMT-07:00) Mountain Time (US &amp; Canada) *</option>
+                        <option value="Pacific Standard Time">(GMT-08:00) Pacific Time (US &amp; Canada) *</option>
+                        <option value="Pacific Standard Time (Mexico)">(GMT-08:00) Baja Caoptionfornia *</option>
+                        <option value="Alaskan Standard Time">(GMT-09:00) Alaska *</option>
+                        <option value="Hawaiian Standard Time">(GMT-10:00) Hawaii</option>
+                        <option value="Samoa Standard Time">(GMT-11:00) Samoa *</option>
+                        <option value="Dateoptionne Standard Time">(GMT-12:00) International Date optionne West</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>

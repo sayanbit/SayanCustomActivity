@@ -16,8 +16,9 @@
 	"dependencies": {
 		"body-parser": "^1.18.3",
 		"express": "^4.16.3",
-		"fuel-soap": "^2.0.0",
+		"fuelsdk-node": "^2.1.0",
 		"jsonwebtoken": "^8.3.0",
+		"moment": "^2.22.2",
 		"sync-request": "^6.0.0"
 	},
 	"devDependencies": {
@@ -28,7 +29,9 @@
 			"marketingCloud": {
 				"jwtSecret": "hellomanjitsinghholidayactivity",
 				"clientId": "gjesb9sy0sgh9a0u1tiettq9",
-				"clientSecret": "MiJ9Y8eQx9KK1jdJYNOeOYIi"
+				"clientSecret": "MiJ9Y8eQx9KK1jdJYNOeOYIi",
+				"defaultTimeZone": "Eastern Standard Time",
+				"defaultDateFormat": "MM/DD/YYYY HH:mm:ss"
 			}
 		}
 	}
