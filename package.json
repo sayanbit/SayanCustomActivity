@@ -31,7 +31,8 @@
 				"clientId": "gjesb9sy0sgh9a0u1tiettq9",
 				"clientSecret": "MiJ9Y8eQx9KK1jdJYNOeOYIi",
 				"defaultTimeZone": "Eastern Standard Time",
-				"defaultDateFormat": "MM/DD/YYYY HH:mm:ss"
+				"defaultDateFormat": "MM/DD/YYYY",
+				"marketingCloudInstance": "s7"
 			}
 		}
 	}
