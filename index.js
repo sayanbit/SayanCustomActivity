@@ -13,6 +13,10 @@ app.use(require('body-parser').raw({
 }));
 //app.use(require('body-parser').json());
 
+app.patch('/login', (req, res) => {
+    return res.send('Request processed by Heroku');
+});
+
 // Route that is called for every contact who reaches the custom split activity
 app.post('/activity/execute', (req, res) => {
     verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
