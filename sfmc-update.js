@@ -124,6 +124,8 @@ module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, 
                 }
             }
         );
+
+        console.log(JSON.stringify(updateResponse));
         if (updateResponse.statusCode === 200) {
             let parsedResponse = JSON.parse(updateResponse.getBody('utf8'));
             console.log('parsedResponse', updateResponse.getBody('utf8'));
