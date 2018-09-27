@@ -40,7 +40,7 @@ app.post('/activity/execute', (req, res) => {
         if (!dataExtensionName || !fieldToUpdate || !daysToSendEmailOn || !subKey) {
             return res.status(400).end();
         } else {
-            sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName, daysToSendEmailOn, res);
+            return sfmc.updateDataExtension(dataExtensionName, fieldToUpdate, subKey, holidayDataExtensionName, daysToSendEmailOn, res);
         }
     });
 });

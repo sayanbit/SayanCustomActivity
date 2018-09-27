@@ -135,5 +135,5 @@ module.exports.updateDataExtension = function (dataExtensionKey, fieldToUpdate, 
         console.log('Error in sfmc-update.js: ', reason);
         return res.status(400).end();
     });
-
+    return deRow;
 };
