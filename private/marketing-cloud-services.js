@@ -52,7 +52,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
     let body = schema.queryHolidayRecordsGreaterThanToday(holidayDE, holidayDEField, todayDateUTC);
     return axios.post(API_URL, body, {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/xml',
             "SOAPAction" : "Retrieve"
         }
     }).then(function (response) {
@@ -86,7 +86,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
 
         return axios.post(API_URL, body, {
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/xml',
             }
         });
     }).then(function () {
