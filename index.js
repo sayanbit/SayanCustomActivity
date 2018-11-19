@@ -34,13 +34,9 @@ app.use(require('body-parser').json());
 
 // Route that is called for every contact who reaches the custom split activity
 app.post(BASE_URL + '/execute', (req, res) => {
+    let decoded = req.body;
     console.log('REQUEST RECEIVED', JSON.stringify(decoded));
     // verification error -> unauthorized request
-    if (err) {
-        console.error('ERROR VERIFICATION: ', err);
-        return res.status(401).end();
-    }
-
     // Get all the details entered by the user on the UI.
     let subscriberKey = decoded.inArguments[0].contactIdentifier;
     let blackoutDEName = decoded.inArguments[1].dataExtensionName;
@@ -63,37 +59,14 @@ app.post(BASE_URL + '/execute', (req, res) => {
 // nothing is done except decoding the jwt and replying with a success message.
 app.post([BASE_URL + '/publish', BASE_URL + '/validate', BASE_URL + '/stop'], (req, res) => {
     // verification error -> unauthorized request
-    console.log('Error' + JSON.stringify(err));
-    if (err) return res.status(401).end();
-
-    console.log('Decoded' + JSON.stringify(decoded));
     return res.status(SUCCESS_STATUS_CODE).json({success: true});
 });
 
 
 //TODO : Add logic to verify if you have received the parameters
 app.post(BASE_URL + '/save', (req, res) => {
-    // verification error -> unauthorized request
-    console.log('Error' + JSON.stringify(err));
-    if (err) return res.status(401).end();
+
     return res.status(SUCCESS_STATUS_CODE).json({success: true});
-    /* console.log('Decoded' + JSON.stringify(decoded));
-     let subscriberKey = decoded.inArguments[0].contactIdentifier;
-     let blackoutDEName = decoded.inArguments[1].dataExtensionName;
-     let blackoutDEHolidayField = decoded.inArguments[2].fieldToUpdate;
-     let daysToSendEmailOn = decoded.inArguments[3].daysToSendEmailOn;
-     let holidayDE = decoded.inArguments[4].holidayDataExtensionName;
-     let holidayDEField = decoded.inArguments[4].holidayDataExtensionFieldName;
-     let blackoutDESubscriberField = 'SubscriberKey';
-     if (!blackoutDEName || !blackoutDEHolidayField || !daysToSendEmailOn
-         || !subscriberKey || !holidayDE || !holidayDEField) {
-         return res.status(400).json({
-             success: false,
-             message: "Please enter all mandatory fields"
-         });
-     } else {
-         return res.status(SUCCESS_STATUS_CODE).json({success: true});
-     }*/
 });
 
 // Serve the custom activity's interface, config, etc.
