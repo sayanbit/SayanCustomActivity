@@ -49,7 +49,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
 
     // Only get holidays starting today. Default 2500 holidays will be fetched.
 
-    let body = schema.queryHolidayRecordsGreaterThanToday(holidayDE, holidayDEField, todayDateUTC);
+    let body = schema.queryHolidayRecordsGreaterThanToday(holidayDE, holidayDEField, moment.utc().format('YYYY-MM-DD'));
     return axios.post(API_URL, body, {
         headers: {
             'Content-Type': 'text/xml',
