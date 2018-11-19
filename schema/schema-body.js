@@ -69,7 +69,7 @@ module.exports.queryHolidayRecordsGreaterThanToday = function (holidayDataExtens
         "<ObjectType>DataExtensionObject[FETCH_DATA_EXTENSION_NAME]</ObjectType>" +
         "<Properties>FIELD_TO_SEARCH</Properties>" +
         "<Filter xsi:type=\"SimpleFilterPart\">" +
-        "<Property>HolidayDate</Property>" +
+        "<Property>FIELD_TO_SEARCH</Property>" +
         "<SimpleOperator>greaterThanOrEqual</SimpleOperator>" +
         "<DateValue>FETCH-FROM_DATE</DateValue>" +
         "</Filter>" +
@@ -81,6 +81,7 @@ module.exports.queryHolidayRecordsGreaterThanToday = function (holidayDataExtens
         .replace('USER_NAME', userName)
         .replace('PASSWORD', password)
         .replace('FETCH_DATA_EXTENSION_NAME', holidayDataExtensionName)
+        .replace('FIELD_TO_SEARCH', fieldToSearch)
         .replace('FIELD_TO_SEARCH', fieldToSearch)
         .replace('FETCH-FROM_DATE', date)
 };

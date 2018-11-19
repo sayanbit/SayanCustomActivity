@@ -133,7 +133,7 @@ app.get('/saveTest', function (req, res) {
 app.use(express.static(Path.join(__dirname, 'public')));
 
 // Start the server and listen on the port specified by Heroku or defaulting to 12345
-app.listen(process.env.PORT || 443, () => {
+app.listen(process.env.PORT || 4433, () => {
     console.log('Service Cloud custom split backend is now running at port! ' + (process.env.PORT || 443));
 });
 

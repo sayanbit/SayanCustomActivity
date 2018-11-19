@@ -44,53 +44,61 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
                                                subscriberKey, holidayDE, holidayDEField,
                                                daysToSendEmailOn, response) {
 
-    const todayDateUTC = moment.utc().format(loginOptions.defaultDateFormat);
+    const todayDateUTC = moment.utc();
     expressResponse = response;
 
     // Only get holidays starting today. Default 2500 holidays will be fetched.
 
-    let body = schema.queryHolidayRecordsGreaterThanToday(holidayDE, holidayDEField, moment.utc().format('YYYY-MM-DD'));
+    let body = schema.queryHolidayRecordsGreaterThanToday(holidayDE, holidayDEField, todayDateUTC.format('YYYY-MM-DD'));
+    console.log('Firing Request for Date XML');
     return axios.post(API_URL, body, {
         headers: {
             'Content-Type': 'text/xml',
-            "SOAPAction" : "Retrieve"
+            "SOAPAction": "Retrieve"
         }
-    }).then(function (response) {
-        console.log(response.body);
-        if (response === undefined || response === null) {
-            expressResponse.send('Error creating DE Row, please make sure your credentials and DE name is correct.');
-        } else {
-            _parseHolidayServiceResponse(response.data, holidayDEField);
-        }
+    }).then(function (resp) {
+        console.log('Body: ' + resp.data);
+        return new Promise((resolve, reject) => {
+            if (resp === undefined || resp === null) {
+                expressResponse.send('Error creating DE Row, please make sure your credentials and DE name is correct.');
+                reject('Error' + resp);
+            } else {
+                console.log('In resolve');
+                resolve(_parseHolidayServiceResponse(resp.data, holidayDEField));
+
+            }
+        })
     }).then(function (holidayList) {
         let isHoliday = true;
 
         // Get current day from date i.e. Monday / Tuesday etc
         let currentDayOfWeek = todayDateUTC.format(DAY_OF_WEEK_FORMAT);
-        let temporaryDate = todayDateUTC;
+        let temporaryDate = todayDateUTC.subtract('1', 'days');
 
         //Run this loop until you get a desired day when the email is to be sent and
         // that day is not in the holiday list
         while (daysToSendEmailOn.indexOf(currentDayOfWeek) === -1 || isHoliday === true) {
-
             temporaryDate = temporaryDate.add('1', 'days');
 
             //Find the day again after incrementing
             currentDayOfWeek = temporaryDate.format(DAY_OF_WEEK_FORMAT);
             if (holidayList.length > 0) {
                 isHoliday = holidayList.includes(temporaryDate.format(loginOptions.defaultDateFormat));
+            } else {
+                isHoliday = false;
             }
         }
         let body = schema.createRecord(blackoutDE, blackoutDEHolidayField,
             temporaryDate.format(loginOptions.defaultDateFormat), subscriberKey);
-
+        console.log('Posting Response');
         return axios.post(API_URL, body, {
             headers: {
                 'Content-Type': 'text/xml',
+                "SOAPAction": "Update"
             }
         });
     }).then(function () {
-
+        return expressResponse.status(SUCCESS_STATUS_CODE).json({branchResult: 'forward'});
     }).catch(reason => {
         console.log('Error in while updating.js: ', reason);
         return expressResponse.status(400).end();
@@ -99,9 +107,9 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
 };
 
 let _parseHolidayServiceResponse = function (response, fieldName) {
+    console.log('Response from Date Service');
     const todayDateUTC = moment.utc().format(loginOptions.defaultDateFormat);
     let result = JSON.parse(parser.toJson(response, options));
-    console.log(todayDateUTC);
     if (cache.get(todayDateUTC)) {
         return cache.get(todayDateUTC);
     } else {
@@ -109,6 +117,7 @@ let _parseHolidayServiceResponse = function (response, fieldName) {
         fieldName = fieldName || 'Holiday Date';
 
         if (result["soap:Envelope"][0]["soap:Body"][0]["RetrieveResponseMsg"][0]
+            && result["soap:Envelope"][0]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"]
             && result["soap:Envelope"][0]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"][0]) {
             let holidays = result["soap:Envelope"][0]["soap:Body"][0]["RetrieveResponseMsg"][0]["Results"][0];
 
