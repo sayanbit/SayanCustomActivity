@@ -19,28 +19,28 @@
 			"url": "https://ms-holiday-check.herokuapp.com/activity/save",
 			"verb": "POST",
 			"body": "",
-			"useJwt": false,
+			"useJwt": true,
 			"customerKey": "customblackoutactivity"
 		},
 		"publish": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
-			"useJwt": false,
+			"useJwt": true,
 			"customerKey": "customblackoutactivity"
 		},
 		"validate": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
-			"useJwt": false,
+			"useJwt": true,
 			"customerKey": "customblackoutactivity"
 		},
 		"stop": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/stop",
 			"verb": "POST",
 			"body": "",
-			"useJwt": false,
+			"useJwt": true,
 			"customerKey": "customblackoutactivity"
 		}
 	},
@@ -83,7 +83,7 @@
 			"url": "https://ms-holiday-check.herokuapp.com/activity/execute",
 			"verb": "POST",
 			"body": "",
-			"useJwt": false,
+			"useJwt": true,
 			"header": "",
 			"format": "json",
 			"timeout": 90000,
