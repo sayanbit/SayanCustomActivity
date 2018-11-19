@@ -20,7 +20,7 @@ const express = require('express');
 const Pkg = require(Path.join(__dirname, './package.json'));
 const marketingCloudService = require('./private/marketing-cloud-services');
 const verifyToken = require('./private/jwt-verification');
-const BASE_URL = '';//'/salesforceMarketingCloud/customActivities/blackoutActivity';
+const BASE_URL = '/activity';//'/salesforceMarketingCloud/customActivities/blackoutActivity';
 const SUCCESS_STATUS_CODE = 200;
 const axios = require('axios');
 
