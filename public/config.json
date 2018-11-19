@@ -1,5 +1,5 @@
 {
-	"key": "de8ede76-8fce-4218-8500-6aaeaa753d86",
+	"key": "350969b3-fd16-4fa7-8813-82a66ece223b",
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/icon.png",
@@ -9,39 +9,39 @@
 	"type": "RESTDECISION",
 	"lang": {
 		"en-US": {
-			"name": "Holiday Check",
+			"name": "Custom Blackout",
 			"description": "A custom activity to check if the working it is a holiday or not or to send emails on specific days."
 		}
 	},
 	"configurationArguments": {
-		"applicationExtensionKey": "de8ede76-8fce-4218-8500-6aaeaa753d86",
+		"applicationExtensionKey": "350969b3-fd16-4fa7-8813-82a66ece223b",
 		"save": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/save",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"customerKey": "customblackoutactivity"
 		},
 		"publish": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"customerKey": "customblackoutactivity"
 		},
 		"validate": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"customerKey": "customblackoutactivity"
 		},
 		"stop": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/stop",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"customerKey": "customblackoutactivity"
 		}
 	},
 	"wizardSteps": [
@@ -55,12 +55,6 @@
 			"height": 475,
 			"width": 1000,
 			"fullscreen": true
-		},
-		"runningModal": {
-			"url": "runningModal.html"
-		},
-		"runningHover": {
-			"url": "runningHover.html"
 		}
 	},
 	"arguments": {
@@ -80,6 +74,9 @@
 				},
 				{
 					"holidayDataExtensionName": ""
+				},
+				{
+					"holidayDataExtensionFieldName": ""
 				}
 			],
 			"outArguments": [],
@@ -90,16 +87,16 @@
 			"header": "",
 			"format": "json",
 			"timeout": 90000,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"customerKey": "customblackoutactivity"
 		}
 	},
 	"outcomes": [
 		{
 			"arguments": {
-				"branchResult": "forward"
+				"branchResult": "result"
 			},
 			"metaData": {
-				"label": "Join to Wait Element"
+				"label": "Join to wait element"
 			}
 		}
 	],
@@ -146,6 +143,14 @@
 					},
 					{
 						"holidayDataExtensionName": {
+							"dataType": "string",
+							"isNullable": false,
+							"direction": "in",
+							"access": "visible"
+						}
+					},
+					{
+						"holidayDataExtensionFieldName": {
 							"dataType": "string",
 							"isNullable": false,
 							"direction": "in",

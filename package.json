@@ -1,7 +1,6 @@
 {
-	"name": "msholidaycheck",
-	"version": "1.0.0",
-	"description": "Holiday Check Package",
+	"name": "holiday-weekend-service--dev",
+	"version": "0.0.1",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +8,20 @@
 	},
 	"keywords": [
 		"sfmc",
-		"holiday check"
+		"holiday check",
+		"weekend service"
 	],
-	"author": "Manjit Singh",
-	"license": "ISC",
+	"author": "Deloitte/Manjit Singh",
+	"license": "MIT",
 	"dependencies": {
+		"axios": "^0.18.0",
 		"body-parser": "^1.18.3",
 		"express": "^4.16.3",
 		"fuelsdk-node": "^2.1.0",
 		"jsonwebtoken": "^8.3.0",
 		"moment": "^2.22.2",
-		"sync-request": "^6.0.0"
+		"xml2js": "^0.4.19",
+		"xml2json": "^0.11.2"
 	},
 	"devDependencies": {
 		"@types/express": "^4.16.0"
@@ -27,12 +29,14 @@
 	"options": {
 		"salesforce": {
 			"marketingCloud": {
-				"jwtSecret": "hellomanjitsinghholidayactivity",
-				"clientId": "gjesb9sy0sgh9a0u1tiettq9",
-				"clientSecret": "MiJ9Y8eQx9KK1jdJYNOeOYIi",
+				"jwtSecret": "customblackoutactivity",
+				"clientId": "11111111",
+				"clientSecret": "111111111",
 				"defaultTimeZone": "Eastern Standard Time",
 				"defaultDateFormat": "MM/DD/YYYY",
-				"marketingCloudInstance": "s7"
+				"marketingCloudInstance": "s10",
+				"username": "manjit5190",
+				"password": "journey@1"
 			}
 		}
 	}
