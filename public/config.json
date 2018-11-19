@@ -20,28 +20,28 @@
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "customblackoutactivity"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"publish": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "customblackoutactivity"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"validate": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "customblackoutactivity"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		},
 		"stop": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/stop",
 			"verb": "POST",
 			"body": "",
 			"useJwt": true,
-			"customerKey": "customblackoutactivity"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		}
 	},
 	"wizardSteps": [
@@ -87,7 +87,7 @@
 			"header": "",
 			"format": "json",
 			"timeout": 90000,
-			"customerKey": "customblackoutactivity"
+			"customerKey": "hellomanjitsinghholidayactivity"
 		}
 	},
 	"outcomes": [
