@@ -50,7 +50,7 @@ app.post(BASE_URL + '/execute', (req, res) => {
         let blackoutDEHolidayField = decoded.inArguments[2].fieldToUpdate;
         let daysToSendEmailOn = decoded.inArguments[3].daysToSendEmailOn;
         let holidayDE = decoded.inArguments[4].holidayDataExtensionName;
-        let holidayDEField = decoded.inArguments[5].holidayDataExtensionFieldName;
+        let holidayDEField = decoded.inArguments[4].holidayDataExtensionFieldName;
         let blackoutDESubscriberField = 'SubscriberKey';
 
         if (!blackoutDEName || !blackoutDEHolidayField || !daysToSendEmailOn || !subscriberKey) {
