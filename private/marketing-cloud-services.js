@@ -100,7 +100,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
 
 let _parseHolidayServiceResponse = function (response, fieldName) {
     const todayDateUTC = moment.utc().format(loginOptions.defaultDateFormat);
-    let result = JSON.parse(parser.toJson(xml, options));
+    let result = JSON.parse(parser.toJson(response, options));
     console.log(todayDateUTC);
     if (cache.get(todayDateUTC)) {
         return cache.get(todayDateUTC);
