@@ -29,7 +29,7 @@
 	"options": {
 		"salesforce": {
 			"marketingCloud": {
-				"jwtSecret": "customblackoutactivity",
+				"jwtSecret": "hellomanjitsinghholidayactivity",
 				"clientId": "11111111",
 				"clientSecret": "111111111",
 				"defaultTimeZone": "Eastern Standard Time",
