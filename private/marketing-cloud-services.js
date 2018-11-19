@@ -53,6 +53,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
     return axios.post(API_URL, body, {
         headers: {
             'Content-Type': 'application/json',
+            "SOAPAction" : "Retrieve"
         }
     }).then(function (response) {
         console.log(response.body);
