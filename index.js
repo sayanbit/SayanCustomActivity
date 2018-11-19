@@ -20,7 +20,7 @@ const express = require('express');
 const Pkg = require(Path.join(__dirname, './package.json'));
 const marketingCloudService = require('./private/marketing-cloud-services');
 const verifyToken = require('./private/jwt-verification');
-const BASE_URL = '/salesforceMarketingCloud/customActivities/blackoutActivity';
+const BASE_URL = '';//'/salesforceMarketingCloud/customActivities/blackoutActivity';
 const SUCCESS_STATUS_CODE = 200;
 const axios = require('axios');
 
@@ -66,15 +66,68 @@ app.post(BASE_URL + '/execute', (req, res) => {
 // Routes for saving, publishing and validating the custom activity. In this case
 // nothing is done except decoding the jwt and replying with a success message.
 app.post([BASE_URL + '/publish', BASE_URL + '/validate', BASE_URL + '/stop'], (req, res) => {
-    return res.status(SUCCESS_STATUS_CODE).json({success: true});
+    verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
+        // verification error -> unauthorized request
+        console.log('Error' + JSON.stringify(err));
+        if (err) return res.status(401).end();
+
+        console.log('Decoded' + JSON.stringify(decoded));
+        return res.status(SUCCESS_STATUS_CODE).json({success: true});
+    });
 });
 
 
 //TODO : Add logic to verify if you have received the parameters
 app.post(BASE_URL + '/save', (req, res) => {
-    return res.status(SUCCESS_STATUS_CODE).json({success: true});
+    verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
+        // verification error -> unauthorized request
+        console.log('Error' + JSON.stringify(err));
+        if (err) return res.status(401).end();
+        return res.status(SUCCESS_STATUS_CODE).json({success: true});
+        /* console.log('Decoded' + JSON.stringify(decoded));
+         let subscriberKey = decoded.inArguments[0].contactIdentifier;
+         let blackoutDEName = decoded.inArguments[1].dataExtensionName;
+         let blackoutDEHolidayField = decoded.inArguments[2].fieldToUpdate;
+         let daysToSendEmailOn = decoded.inArguments[3].daysToSendEmailOn;
+         let holidayDE = decoded.inArguments[4].holidayDataExtensionName;
+         let holidayDEField = decoded.inArguments[4].holidayDataExtensionFieldName;
+         let blackoutDESubscriberField = 'SubscriberKey';
+         if (!blackoutDEName || !blackoutDEHolidayField || !daysToSendEmailOn
+             || !subscriberKey || !holidayDE || !holidayDEField) {
+             return res.status(400).json({
+                 success: false,
+                 message: "Please enter all mandatory fields"
+             });
+         } else {
+             return res.status(SUCCESS_STATUS_CODE).json({success: true});
+         }*/
+    });
 });
 
+app.get('/saveTest', function (req, res) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log('Response 1');
+            resolve('Return 1')
+        }, 5000)
+    }).then(function (val) {
+        console.log(val);
+        return axios.get('https://www.mozilla.org');
+    }).then(function (res) {
+        console.log(res.data.substring(0, 10));
+        return res.data.substring(0, 10);
+    }).then(function (resp) {
+        console.log(resp.toUpperCase());
+    }).then(function () {
+        console.log('Calling Salesforce');
+        axios.get('https://www.salesforce.com')
+    }).then(function () {
+        console.log('Test');
+        res.json({
+            Status: 'Okay'
+        })
+    })
+});
 
 // Serve the custom activity's interface, config, etc.
 app.use(express.static(Path.join(__dirname, 'public')));
