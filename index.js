@@ -50,12 +50,13 @@ app.post(BASE_URL + '/execute', (req, res) => {
         let blackoutDEHolidayField = decoded.inArguments[2].fieldToUpdate;
         let daysToSendEmailOn = decoded.inArguments[3].daysToSendEmailOn;
         let holidayDE = decoded.inArguments[4].holidayDataExtensionName;
-        let holidayDEField = decoded.inArguments[4].holidayDataExtensionFieldName;
+        let holidayDEField = decoded.inArguments[5].holidayDataExtensionFieldName;
         let blackoutDESubscriberField = 'SubscriberKey';
 
         if (!blackoutDEName || !blackoutDEHolidayField || !daysToSendEmailOn || !subscriberKey) {
             return res.status(400).end();
         } else {
+            console.log('MC');
             return marketingCloudService.updateDataExtension(blackoutDEName, blackoutDEHolidayField,
                 blackoutDESubscriberField, subscriberKey, holidayDE,
                 holidayDEField, daysToSendEmailOn, res);

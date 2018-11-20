@@ -30,8 +30,6 @@
 		"salesforce": {
 			"marketingCloud": {
 				"jwtSecret": "hellomanjitsinghholidayactivity",
-				"clientId": "11111111",
-				"clientSecret": "111111111",
 				"defaultTimeZone": "Eastern Standard Time",
 				"defaultDateFormat": "MM/DD/YYYY",
 				"marketingCloudInstance": "s10",

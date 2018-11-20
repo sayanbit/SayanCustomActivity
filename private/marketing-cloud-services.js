@@ -98,6 +98,14 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
             }
         });
     }).then(function () {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve();
+            }, 2000);
+        });
+
+    }).then(function () {
+        console.log('Success ', 'full');
         return expressResponse.status(SUCCESS_STATUS_CODE).json({branchResult: 'forward'});
     }).catch(reason => {
         console.log('Error in while updating.js: ', reason);
