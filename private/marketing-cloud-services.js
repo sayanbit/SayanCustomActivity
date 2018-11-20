@@ -57,7 +57,6 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
             "SOAPAction": "Retrieve"
         }
     }).then(function (resp) {
-        console.log('Body: ' + resp.data);
         return new Promise((resolve, reject) => {
             if (resp === undefined || resp === null) {
                 expressResponse.send('Error creating DE Row, please make sure your credentials and DE name is correct.');
