@@ -106,7 +106,7 @@ function save() {
     payload.arguments.execute.inArguments[2].fieldToUpdate = fieldToUpdate;
     payload.arguments.execute.inArguments[3].daysToSendEmailOn = selectedDays;
     payload.arguments.execute.inArguments[4].holidayDataExtensionName = holidayDataExtensionName;
-    payload.arguments.execute.inArguments[5].holidayDataExtensionFieldName = holidayDataExtensionFieldName;
+    payload.arguments.execute.inArguments[4].holidayDataExtensionFieldName = holidayDataExtensionFieldName;
 
     console.log(JSON.stringify(payload));
 
