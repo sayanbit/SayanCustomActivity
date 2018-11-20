@@ -100,6 +100,7 @@ module.exports.updateDataExtension = function (blackoutDE, blackoutDEHolidayFiel
     }).then(function () {
         return new Promise(resolve => {
             setTimeout(() => {
+                console.log('Waiting');
                 resolve();
             }, 2000);
         });
