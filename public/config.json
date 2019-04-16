@@ -1,5 +1,5 @@
 {
-	"key": "350969b3-fd16-4fa7-8813-82a66ece223b",
+	"key": "fb667253-b2fb-4a43-a067-816e2ac48467",
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/icon.png",
@@ -14,7 +14,7 @@
 		}
 	},
 	"configurationArguments": {
-		"applicationExtensionKey": "350969b3-fd16-4fa7-8813-82a66ece223b",
+		"applicationExtensionKey": "QPqehkW25ZOaFS1dxjMqwjD8WO_TkEcHKptkAsG8G-CNQVsAQO91510uZkb25doJH6kbEtpPBYTi7dCTdyuabFvTx6TnAuzjF0fTpqXVz2S94UuaA9oC-ZbYQFTjtkBJQ-exH-M2upGV5GaRY_eUYev6s37bunudFDVtl_yUmRYbQC2IpYgRqKjezI3IXzdRqGUTuioIVZmwn5tiQWuSI6AapK15QGiaxxI0rETCgx-Jf88hSp3vnt8apeitSA2",
 		"save": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/save",
 			"verb": "POST",
