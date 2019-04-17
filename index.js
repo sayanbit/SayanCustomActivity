@@ -19,7 +19,7 @@ const Path = require('path');
 const express = require('express');
 const Pkg = require(Path.join(__dirname, './package.json'));
 const marketingCloudService = require('./private/marketing-cloud-services');
-const JWT = require(Path.join(__dirname, '..', 'lib', 'jwt-verification.js'));
+const verifyToken = require('./private/jwt-verification').verifyToken;
 const BASE_URL = '/activity';//'/salesforceMarketingCloud/customActivities/blackoutActivity';
 const SUCCESS_STATUS_CODE = 200;
 const axios = require('axios');
@@ -37,7 +37,7 @@ app.use(require('body-parser').raw({
 // Route that is called for every contact who reaches the custom split activity
 app.post(BASE_URL + '/execute', (req, res) => {
     console.log('Getting new Request...');
-    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    verifyToken(req.body, Pkg.options.salesforce.marketingCloud.jwtSecret, (err, decoded) => {
         console.log('REQUEST RECEIVED', JSON.stringify(decoded));
         // verification error -> unauthorized request
         if (err) {
