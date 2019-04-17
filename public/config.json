@@ -1,5 +1,4 @@
 {
-	"key": "fb667253-b2fb-4a43-a067-816e2ac48467",
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/icon.png",
@@ -19,29 +18,27 @@
 			"url": "https://ms-holiday-check.herokuapp.com/activity/save",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"useJwt": true
 		},
 		"publish": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/publish",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"useJwt": true
 		},
 		"validate": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/validate",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"useJwt": true
+			
 		},
 		"stop": {
 			"url": "https://ms-holiday-check.herokuapp.com/activity/stop",
 			"verb": "POST",
 			"body": "",
-			"useJwt": true,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"useJwt": true
+			
 		}
 	},
 	"wizardSteps": [
@@ -86,8 +83,7 @@
 			"useJwt": true,
 			"header": "",
 			"format": "json",
-			"timeout": 90000,
-			"customerKey": "hellomanjitsinghholidayactivity"
+			"timeout": 90000
 		}
 	},
 	"outcomes": [
