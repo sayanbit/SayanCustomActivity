@@ -37,7 +37,7 @@ app.use(require('body-parser').raw({
 // Route that is called for every contact who reaches the custom split activity
 app.post(BASE_URL + '/execute', (req, res) => {
     console.log('Getting new Request...');
-        JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
         console.log('REQUEST RECEIVED', JSON.stringify(decoded));
         // verification error -> unauthorized request
         if (err) {
@@ -62,8 +62,8 @@ app.post(BASE_URL + '/execute', (req, res) => {
                 blackoutDESubscriberField, subscriberKey, holidayDE,
                 holidayDEField, daysToSendEmailOn, res);
         }
+    });
 });
-    }
 
 // Routes for saving, publishing and validating the custom activity. In this case
 // nothing is done except decoding the jwt and replying with a success message.
