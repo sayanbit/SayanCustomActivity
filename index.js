@@ -61,9 +61,7 @@ app.post(BASE_URL + '/execute', (req, res) => {
                 blackoutDESubscriberField, subscriberKey, holidayDE,
                 holidayDEField, daysToSendEmailOn, res);
         }
-    );
-});
-
+}
 // Routes for saving, publishing and validating the custom activity. In this case
 // nothing is done except decoding the jwt and replying with a success message.
 app.post([BASE_URL + '/publish', BASE_URL + '/validate', BASE_URL + '/stop'], (req, res) => {
