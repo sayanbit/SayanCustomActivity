@@ -2,7 +2,7 @@
 	"workflowApiVersion": "1.1",
 	"metaData": {
 		"icon": "images/icon.png",
-		"smallIcon": "images/icon_small.png",
+		"smallIcon": "images/iconSmall.png",
 		"configOnDrop": true
 	},
 	"type": "RESTDECISION",
