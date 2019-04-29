@@ -13,7 +13,7 @@
 		}
 	},
 	"configurationArguments": {
-		"applicationExtensionKey": "QPqehkW25ZOaFS1dxjMqwjD8WO_TkEcHKptkAsG8G-CNQVsAQO91510uZkb25doJH6kbEtpPBYTi7dCTdyuabFvTx6TnAuzjF0fTpqXVz2S94UuaA9oC-ZbYQFTjtkBJQ-exH-M2upGV5GaRY_eUYev6s37bunudFDVtl_yUmRYbQC2IpYgRqKjezI3IXzdRqGUTuioIVZmwn5tiQWuSI6AapK15QGiaxxI0rETCgx-Jf88hSp3vnt8apeitSA2",
+		"applicationExtensionKey": "5EZU9e5rscfgFa8S8uo-W5gaZeoZ1WP5vwY67PqLB9tQYbsOJ21F3E5OjK3PqimXh3JRwSXsMzzbcXRlqBOqy52Av9SEZy49lsXFNbUxOY2YhPithIAUaYRDr2GSr80IAE2N090VoIrh6lsleahuyEPEp3r-oGhIjVCzRoUxcgo4RleaHgU4N6a81aiPH7E0Gl73BJoMXlNQU4zwC7CIFL480WhLqzd1v_EO8JPScmYMFhh6LxadjY4jeq1dQw2",
 		"save": {
 			"url": "https://customblackout.herokuapp.com/journeybuilder/save",
 			"verb": "POST",
