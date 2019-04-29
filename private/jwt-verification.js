@@ -19,6 +19,7 @@
  * @param {string} secret Secret signing key create in Administration > Key Management of marketing cloud
  * @param {string} cb Callback function invoked after verification
  */
+'use strict';
 
 module.exports.verifyToken = function (body, secret, cb) {
     if (!body) {
