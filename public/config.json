@@ -3,6 +3,7 @@
 	"metaData": {
 		"icon": "images/icon.png",
 		"smallIcon": "images/iconSmall.png",
+		"category": "flowcontrol",
 		"configOnDrop": true
 	},
 	"type": "RESTDECISION",
