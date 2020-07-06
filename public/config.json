@@ -14,31 +14,29 @@
 		}
 	},
 	"configurationArguments": {
-		"applicationExtensionKey": "5EZU9e5rscfgFa8S8uo-W5gaZeoZ1WP5vwY67PqLB9tQYbsOJ21F3E5OjK3PqimXh3JRwSXsMzzbcXRlqBOqy52Av9SEZy49lsXFNbUxOY2YhPithIAUaYRDr2GSr80IAE2N090VoIrh6lsleahuyEPEp3r-oGhIjVCzRoUxcgo4RleaHgU4N6a81aiPH7E0Gl73BJoMXlNQU4zwC7CIFL480WhLqzd1v_EO8JPScmYMFhh6LxadjY4jeq1dQw2",
 		"save": {
 			"url": "https://customblackout.herokuapp.com/journeybuilder/save",
 			"verb": "POST",
-			"body": "",
-			"useJwt": true
+			"body": ""
+			
 		},
 		"publish": {
 			"url": "https://customblackout.herokuapp.com/journeybuilder/publish",
 			"verb": "POST",
-			"body": "",
-			"useJwt": true
+			"body": ""
 		},
 		"validate": {
 			"url": "https://customblackout.herokuapp.com/journeybuilder/validate",
 			"verb": "POST",
-			"body": "",
-			"useJwt": true
+			"body": ""
+			
 			
 		},
 		"stop": {
 			"url": "https://customblackout.herokuapp.com/journeybuilder/stop",
 			"verb": "POST",
-			"body": "",
-			"useJwt": true
+			"body": ""
+			
 			
 		}
 	},
@@ -80,8 +78,7 @@
 			"outArguments": [],
 			"url": "https://customblackout.herokuapp.com/journeybuilder/execute",
 			"verb": "POST",
-			"body": "",
-			"useJwt": true,
+			"body": ""
 			"header": "",
 			"format": "json",
 			"timeout": 90000
