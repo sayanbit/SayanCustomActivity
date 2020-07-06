@@ -14,7 +14,7 @@
 		"holiday check",
 		"weekend service"
 	],
-	"author": "Deloitte/Sayan Bit",
+	"author": "Deloitte/Sayan",
 	"license": "MIT",
 	"dependencies": {
 		"axios": "^0.18.0",
