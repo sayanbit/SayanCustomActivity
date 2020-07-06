@@ -11,7 +11,7 @@
 		"holiday check",
 		"weekend service"
 	],
-	"author": "Deloitte/Manjit Singh",
+	"author": "Deloitte/Sayan Bit",
 	"license": "MIT",
 	"dependencies": {
 		"axios": "^0.18.0",
@@ -32,8 +32,8 @@
 				"defaultTimeZone": "Eastern Standard Time",
 				"defaultDateFormat": "MM/DD/YYYY",
 				"marketingCloudInstance": "s7",
-				"username": "webinar_training",
-				"password": "Deloitte@1234"
+				"username": "saybit1@deloitte.com",
+				"password": "avaya@4321"
 			}
 		}
 	}
