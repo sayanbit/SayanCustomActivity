@@ -1,9 +1,6 @@
 {
 	"name": "holiday-weekend-service--dev",
 	"version": "0.0.1",
-	  "engines": {
-    "npm": "6.x"
-	},
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +11,7 @@
 		"holiday check",
 		"weekend service"
 	],
-	"author": "Deloitte/Sayan",
+	"author": "Deloitte/Manjit Singh",
 	"license": "MIT",
 	"dependencies": {
 		"axios": "^0.18.0",
@@ -35,8 +32,8 @@
 				"defaultTimeZone": "Eastern Standard Time",
 				"defaultDateFormat": "MM/DD/YYYY",
 				"marketingCloudInstance": "s7",
-				"username": "saybit1@deloitte.com",
-				"password": "avaya@4321"
+				"username": "webinar_training",
+				"password": "Deloitte@1234"
 			}
 		}
 	}
